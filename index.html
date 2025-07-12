@@ -477,27 +477,42 @@
                     </div>
 
                     <!-- WhatsApp Configuration -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">WhatsApp (Twilio)</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Account SID</label>
-                                <input type="text" id="twilioAccountSid" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Auth Token</label>
-                                <input type="password" id="twilioAuthToken" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Service SID</label>
-                                <input type="text" id="twilioServiceSid" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            </div>
-                            <button onclick="saveWhatsAppConfig()" class="btn-primary text-white font-bold py-2 px-4 rounded-md">
-                                <i class="fas fa-save mr-2"></i>Guardar
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+    <h3 class="text-xl font-semibold mb-4">WhatsApp (Twilio)</h3>
+    
+    <div class="space-y-4">
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Account SID</label>
+            <input type="text" id="twilioAccountSid" placeholder="ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" class="w-full p-2 border border-gray-300 rounded-md">
+        </div>
+        
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Auth Token</label>
+            <input type="password" id="twilioAuthToken" placeholder="••••••••••••••••••••••••••••••••" class="w-full p-2 border border-gray-300 rounded-md">
+        </div>
+        
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Service SID</label>
+            <input type="text" id="twilioServiceSid" placeholder="MGxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" class="w-full p-2 border border-gray-300 rounded-md">
+        </div>
+        
+        <!-- NUEVA SECCIÓN DE NÚMEROS -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Números de WhatsApp</label>
+            <div id="phoneNumbersList" class="space-y-2">
+                <!-- Los números se cargarán aquí -->
+            </div>
+            <button onclick="addPhoneNumber()" class="mt-2 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">
+                + Agregar Número
+            </button>
+        </div>
+        
+        <button onclick="saveTwilioSettings()" class="w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600">
+            <i class="fas fa-save mr-2"></i>Guardar
+        </button>
+    </div>
+</div>
+
 
                 <!-- Test Connection -->
                 <div class="bg-white p-6 rounded-lg shadow-lg mt-6">
