@@ -764,7 +764,103 @@
                 loadSettings();
             }
         }
+        
+        // Función para agregar número de teléfono
+        function addPhoneNumber() {
+            const phoneList = document.getElementById('phoneNumbersList');
+            const phoneDiv = document.createElement('div');
+            phoneDiv.className = 'flex items-center space-x-2';
+            
+            phoneDiv.innerHTML = `
+                <input type="text" placeholder="Nombre (ej: SHUKINS)" class="flex-1 p-2 border border-gray-300 rounded-md phone-name">
+                <input type="tel" placeholder="+56912345678" class="flex-1 p-2 border border-gray-300 rounded-md phone-number">
+                <button onclick="removePhoneNumber(this)" class="px-3 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">
+                    <i class="fas fa-trash"></i>
+                </button>
+            `;
+            
+            phoneList.appendChild(phoneDiv);
+        }
+        
+        // Función para eliminar número de teléfono
+        function removePhoneNumber(button) {
+            button.parentElement.remove();
+        }
+        
+        // Función para guardar configuración Twilio
+        function saveTwilioSettings() {
+            const accountSid = document.getElementById('twilioAccountSid').value;
+            const authToken = document.getElementById('twilioAuthToken').value;
+            const serviceSid = document.getElementById('twilioServiceSid').value;
+            
+            // Recopilar números de teléfono
+            const phoneNumbers = {};
+            const phoneEntries = document.querySelectorAll('#phoneNumbersList > div');
+            
+            phoneEntries.forEach(entry => {
+                const name = entry.querySelector('.phone-name').value;
+                const number = entry.querySelector('.phone-number').value;
+                if (name && number) {
+                    phoneNumbers[name] = number;
+                }
+            });
+            
+            // Guardar en localStorage
+            localStorage.setItem('twilioAccountSid', accountSid);
+            localStorage.setItem('twilioAuthToken', authToken);
+            localStorage.setItem('twilioServiceSid', serviceSid);
+            localStorage.setItem('whatsappNumbers', JSON.stringify(phoneNumbers));
+            
+            showNotification('Configuración de WhatsApp guardada correctamente', 'success');
+            
+            console.log('Números guardados:', phoneNumbers);
+        }
 
+// Función para cargar números guardados
+function loadPhoneNumbers() {
+    const savedNumbers = localStorage.getItem('whatsappNumbers');
+    if (savedNumbers) {
+        const phoneNumbers = JSON.parse(savedNumbers);
+        const phoneList = document.getElementById('phoneNumbersList');
+        
+        // Limpiar lista actual
+        phoneList.innerHTML = '';
+        
+        // Agregar números guardados
+        Object.entries(phoneNumbers).forEach(([name, number]) => {
+            addPhoneNumber();
+            const lastEntry = phoneList.lastElementChild;
+            lastEntry.querySelector('.phone-name').value = name;
+            lastEntry.querySelector('.phone-number').value = number;
+        });
+    }
+    
+    // Si no hay números, agregar uno por defecto
+    if (document.getElementById('phoneNumbersList').children.length === 0) {
+        addPhoneNumber();
+    }
+}
+
+// Función para mostrar configuración (nueva)
+function showSettings() {
+    showSection('settings');
+    loadPhoneNumbers();
+    
+    // Cargar valores guardados
+    setTimeout(() => {
+        const accountSid = localStorage.getItem('twilioAccountSid') || '';
+        const authToken = localStorage.getItem('twilioAuthToken') || '';
+        const serviceSid = localStorage.getItem('twilioServiceSid') || '';
+        
+        const accountSidInput = document.getElementById('twilioAccountSid');
+        const authTokenInput = document.getElementById('twilioAuthToken');
+        const serviceSidInput = document.getElementById('twilioServiceSid');
+        
+        if (accountSidInput) accountSidInput.value = accountSid;
+        if (authTokenInput) authTokenInput.value = authToken;
+        if (serviceSidInput) serviceSidInput.value = serviceSid;
+    }, 100);
+}
         // Movement modal functions
         function openMovementModal(type) {
             const modal = document.getElementById('movementModal');
