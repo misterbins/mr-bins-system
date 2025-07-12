@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<!-- saved from url=(0134)https://gensparkpublicblob.blob.core.windows.net/user-upload-image/page/toolu_01Ui7LsUDnpPc2TTE1BSwi7i/mr_bins_independent_system.html -->
-<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mr BINS - Sistema ERP</title>
-    <style data-fullcalendar=""></style><link href="./mr_bins_system_files/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./mr_bins_system_files/all.min.css">
-    <script src="./Mr BINS - Sistema ERP_files/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -25,6 +25,18 @@
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .btn-full-return {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            font-weight: 600;
+            border: 2px solid #fff;
+            box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+        }
+        .btn-full-return:hover {
+            background: linear-gradient(135deg, #218838, #1ea085);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(40, 167, 69, 0.4);
         }
         .chart-container {
             position: relative;
@@ -59,112 +71,31 @@
             -webkit-text-fill-color: transparent;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        .logout-btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+        }
+        .logout-btn:hover {
+            background: linear-gradient(135deg, #c0392b, #a93226);
+            transform: translateY(-2px);
+        }
     </style>
-<style>
-    .genspark-notice-dialog {
-      display: flex;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 10001;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .genspark-notice-content {
-      background-color: white;
-      border-radius: 8px;
-      max-width: 600px;
-      width: 90%;
-      box-sizing: border-box;
-      padding: 10px 30px 30px 30px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      font-size: 16px;
-    }
-
-    .genspark-notice-title {
-      color: #000;
-      font-family: Arial;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 150%; 
-    }
-
-    .genspark-notice-list {
-      margin: 24px 0;
-      
-      color: #606366;
-      font-family: Arial;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 150%;
-      padding-left: 12px;
-    }
-
-    .genspark-notice-list li {
-      margin-bottom: 12px;
-      list-style-type: disc;
-    }
-
-    .genspark-notice-list li a {
-      color: #606366;
-      text-decoration: underline;
-    }
-
-    .genspark-notice-checkbox {
-      display: flex;
-      align-items: center;
-      margin-top: 20px;
-      gap: 10px;
-
-      color: #232425;
-
-      font-family: Arial;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-    }
-
-    .genspark-notice-actions {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-      
-    .genspark-notice-ok {
-      color: #232425;
-
-      text-align: center;
-      font-family: Arial;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 150%; 
-
-      cursor: pointer;
-      display: flex;
-      height: 40px;
-      padding: 6px 14px;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      align-self: stretch;
-      border-radius: 8px;
-      border: 1px solid #000;
-      box-sizing: border-box;
-      width: 100%;
-    }
-  </style><link href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/inject.css" rel="stylesheet" type="text/css" data-apio="true"><link data-apio="true" rel="stylesheet" type="text/css" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_chrome-extension_inject_global_module_scss.css"><link data-apio="true" rel="stylesheet" type="text/css" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_common_components_ui_rich-text-editor_toolbar_UserSnippetsButton_module_scss-assets_ap-9b07b5.css"><link data-apio="true" rel="stylesheet" type="text/css" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_app_components_ai-email-assist_OneOffEmail_AIAssistantPanel_AIAssistantPanel_tsx-asset-cbcdef.css"><link data-apio="true" rel="stylesheet" type="text/css" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_app_actions_emailAccountActions_tsx-assets_app_actions_taskActions_ts-assets_app_compo-73fe6f.css"><link data-apio="true" rel="stylesheet" type="text/css" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_app_components_dialogs_InactiveContactStageConfigureDialog_tsx-assets_app_containers_a-57bdff.css"><link data-apio="true" rel="stylesheet" type="text/css" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_app_components_cards_CardExplorerOrganizationNewsArticleCard_module_scss-assets_app_co-4fc3e8.css"><link data-apio="true" rel="stylesheet" type="text/css" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_app_containers_activities_LogActivityTabs_module_scss-assets_chrome-extension_containe-381cfe.css"><link data-apio="true" rel="stylesheet" type="text/css" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_chrome-extension_v2_surfaces_linkedin_components_linkedin-overlay_LinkedinOverlay_tsx--70097a.css"><link data-apio="true" rel="stylesheet" type="text/css" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_chrome-extension_inject_core_components_OpenPopupButton_tsx-assets_chrome-extension_in-571c95.css"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/vendors-node_modules_re-resizable_lib_index_js-node_modules_lodash-es_escape_js-node_modules_-d1d867.chunk.js"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_app_components_intent-data_IntentDataBarsContainer_tsx-assets_app_containers_dialogs_D-09a5ae.chunk.js"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_app_actions_accountHierarchyActions_ts-assets_app_components_recommendations_WebsiteVi-1e8646.chunk.js"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_app_components_playbooks_UserLinkedinProspectorPreferenceDialog_tsx-assets_app_compone-f8f8ca.chunk.js"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_app_components_push-sequences_PushSequences_tsx-assets_app_containers_contacts_Contact-1744f2.chunk.js"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_app_components_recommendations_NumberScoreDisplay_tsx-assets_app_containers_accounts_A-49884c.chunk.js"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_app_components_personas_ManagePersonasDialog_tsx-assets_common_images_managePersona_svg.chunk.js"><link rel="prefetch" as="style" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_app_components_cards_CardExplorerGeneralInformationCard_tsx-assets_app_components_card-dee0cc.css"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_app_components_cards_CardExplorerGeneralInformationCard_tsx-assets_app_components_card-dee0cc.chunk.js"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_app_components_cards_CardExplorerSearchSignalsCard_tsx-assets_app_containers_mixed-com-727ae1.chunk.js"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_app_components_ai-setup-wizard_AISetupWizardModal_tsx.chunk.js"><link rel="prefetch" as="style" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_app_components_finders_FinderExplorerSidebar_module_scss-assets_app_components_common_-778e91.css"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_app_components_finders_FinderExplorerSidebar_module_scss-assets_app_components_common_-778e91.chunk.js"><link rel="prefetch" as="style" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_app_actions_signalActions_ts-assets_app_constants_ListViewItemConstants_ts-assets_app_-d3e715.css"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_app_actions_signalActions_ts-assets_app_constants_ListViewItemConstants_ts-assets_app_-d3e715.chunk.js"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_common_components_mixed-companies_MixedCompanySidebarHeader_tsx.chunk.js"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_app_components_selectable-tables_columns_masterColumns_module_scss-assets_common_selec-b6b745.chunk.js"><link rel="prefetch" as="style" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_app_containers_prospect_ContactSidebarRenderer_tsx-assets_app_components_ai-setup-wiza-5a6fbe.css"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_app_containers_prospect_ContactSidebarRenderer_tsx-assets_app_components_ai-setup-wiza-5a6fbe.chunk.js"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_app_components_shell_navigationUtility_ts.chunk.js"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_app_components_accounts_MixedCompanySidebarDisplay_tsx.chunk.js"><link rel="prefetch" as="style" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_app_components_personas_PersonaFinderPreview_tsx-assets_app_components_accounts_Accoun-92a37f.css"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_app_components_personas_PersonaFinderPreview_tsx-assets_app_components_accounts_Accoun-92a37f.chunk.js"><link rel="prefetch" as="style" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/nm_assets_common_components_contacts_PhoneNumberBadge_module_scss-react-content-loa-ee8354.css"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_common_components_contacts_PhoneNumberBadge_module_scss-node_modules_react-content-loa-ee8354.chunk.js"><link rel="prefetch" as="style" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_app_components_ai-setup-wizard_AISetupWizardModal_module_scss-assets_app_components_ai-f27c7c.css"><link rel="prefetch" as="style" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/css/a_app_components_finders_sieves_FinderPersonaSieve_tsx-assets_app_components_ai-setup-wi-98fda0.css"><link rel="prefetch" as="script" href="chrome-extension://alhgpfoeiimagjlnfekdhkjlkiomcapa/js/assets_app_components_finders_sieves_FinderPersonaSieve_tsx-assets_app_components_ai-setup-wi-98fda0.chunk.js"></head>
+</head>
 <body class="bg-gray-100 font-sans">
     
     <!-- Login Screen -->
-    <div class="zp-open-popup-button"><div class="x_R61yl zp-10-0-5-zp-fixed"><img alt="Apollo.io" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIxLjQ2NTUgNS4wNzE0N0wyMS40NzAzIDE1Ljk4NjNDMjEuNDcxIDE3LjcxMDYgMTkuNjM2NCAxOC44MTYyIDE4LjExMjEgMTguMDFMNy4xNjk4IDEyLjIyMjZDOC4wMDQzMyAxMC44NDkyIDkuMDUzNzcgOS42MjEwOSAxMC4yNzA0IDguNTgzMzJMMTguODUyNCAxNi41MTQ4QzE5LjMwNzEgMTYuOTM1IDIwLjAyNCAxNi40Nzk0IDE5LjgzNjcgMTUuODg5NEwxNi41MDg1IDUuNDA5MDJDMTcuNjI4OCA1LjE0MjEgMTguNzk3MiA1IDE5Ljk5ODkgNUMyMC40OTM5IDUgMjAuOTgyOSA1LjAyNDYgMjEuNDY1NSA1LjA3MTQ3WiIgZmlsbD0iI0VCRjIxMiIvPgo8cGF0aCBkPSJNMTguNDk2MyAzNC45MjUyTDE4LjQ5MTUgMjQuMDY1NEMxOC40OTA4IDIyLjM0MSAyMC4zMjU0IDIxLjIzNTUgMjEuODQ5NyAyMi4wNDE3TDMyLjc5NiAyNy44MzEyQzMxLjk1NTggMjkuMjAxIDMwLjkwMTYgMzAuNDI1MSAyOS42ODAxIDMxLjQ1ODFMMjEuMTA5NCAyMy41MzY5QzIwLjY1NDcgMjMuMTE2NyAxOS45Mzc4IDIzLjU3MjMgMjAuMTI1MSAyNC4xNjIzTDIzLjQ0MDcgMzQuNjAzMUMyMi4zMzYxIDM0Ljg2MjQgMjEuMTg0NCAzNSAyMC4wMDA1IDM1QzE5LjQ5MjkgMzUgMTguOTkwOSAzNC45NzQ2IDE4LjQ5NjMgMzQuOTI1MloiIGZpbGw9IiNFQkYyMTIiLz4KPHBhdGggZD0iTTIzLjQ5MTggMTguODk4MUwzMS40Mzk3IDEwLjI5OTFDMzAuNDAyNyA5LjA3NzY3IDI5LjE3NDQgOC4wMjM5NSAyNy44IDcuMTg1NjNMMjEuOTk2NCAxOC4xNTc4QzIxLjE5MDEgMTkuNjgyIDIyLjI5NTkgMjEuNTE2NyAyNC4wMjAzIDIxLjUxNTlMMzQuOTI0NSAyMS41MTExQzM0Ljk3NDIgMjEuMDE0MSAzNSAyMC41MTAxIDM1IDIwQzM1IDE4LjgxMzggMzQuODYxNyAxNy42NiAzNC42MDE0IDE2LjU1MzNMMjQuMTE3MiAxOS44ODIzQzIzLjUyNzIgMjAuMDY5NiAyMy4wNzE2IDE5LjM1MjggMjMuNDkxOCAxOC44OTgxWiIgZmlsbD0iI0VCRjIxMiIvPgo8cGF0aCBkPSJNNS4wNzA4MSAxOC41NDA2TDE1Ljk0MiAxOC41MzU4QzE3LjY2NjYgMTguNTM1MSAxOC43NzIyIDIwLjM2OTYgMTcuOTY1OSAyMS44OTM5TDEyLjE5MjIgMzIuODA5NUMxMC44MjMxIDMxLjk3MzIgOS41OTg5OCAzMC45MjMzIDguNTY1MTcgMjkuNzA2N0wxNi40NzA3IDIxLjE1MzZDMTYuODkwOSAyMC42OTg5IDE2LjQzNTEgMTkuOTgyIDE1Ljg0NTEgMjAuMTY5NEw1LjQwNzU0IDIzLjQ4MzZDNS4xNDE2MSAyMi4zNjU3IDUgMjEuMTk5NSA1IDIwQzUgMTkuNTA3NSA1LjAyNDQzIDE5LjAyMDcgNS4wNzA4MSAxOC41NDA2WiIgZmlsbD0iI0VCRjIxMiIvPgo8L3N2Zz4K" class="x_kJtSQ"></div></div><div id="loginScreen" class="min-h-screen gradient-bg flex items-center justify-center">
+    <div id="loginScreen" class="min-h-screen gradient-bg flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
             <div class="text-center mb-8">
                 <div class="logo-text mb-2">I ❤️ 🍁 🍒</div>
@@ -175,12 +106,12 @@
             <form id="loginForm">
                 <div class="mb-6">
                     <label class="block text-gray-700 text-sm font-bold mb-2">Usuario</label>
-                    <input type="text" id="username" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required="">
+                    <input type="text" id="username" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                 </div>
                 
                 <div class="mb-6">
                     <label class="block text-gray-700 text-sm font-bold mb-2">Contraseña</label>
-                    <input type="password" id="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required="">
+                    <input type="password" id="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                 </div>
                 
                 <button type="submit" class="w-full btn-primary text-white font-bold py-3 px-4 rounded-md">
@@ -211,9 +142,12 @@
                 </div>
                 
                 <div class="flex items-center space-x-4">
+                    <button onclick="toggleLanguage()" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                        <span id="langToggle">🇺🇸 English</span>
+                    </button>
                     <span id="currentUser" class="text-sm opacity-90"></span>
-                    <button id="logoutBtn" class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-md text-sm font-medium transition-colors">
-                        <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+                    <button onclick="logout()" class="logout-btn">
+                        <i class="fas fa-sign-out-alt mr-2"></i><span data-es="Cerrar Sesión" data-en="Logout">Cerrar Sesión</span>
                     </button>
                 </div>
             </div>
@@ -223,10 +157,10 @@
         <nav class="bg-white shadow-md">
             <div class="container mx-auto">
                 <ul class="flex space-x-8 p-4">
-                    <li><a href="https://gensparkpublicblob.blob.core.windows.net/user-upload-image/page/toolu_01Ui7LsUDnpPc2TTE1BSwi7i/mr_bins_independent_system.html#" onclick="showSection(&#39;dashboard&#39;)" class="nav-link text-gray-700 hover:text-blue-600 font-medium"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a></li>
-                    <li><a href="https://gensparkpublicblob.blob.core.windows.net/user-upload-image/page/toolu_01Ui7LsUDnpPc2TTE1BSwi7i/mr_bins_independent_system.html#" onclick="showSection(&#39;movements&#39;)" class="nav-link text-gray-700 hover:text-blue-600 font-medium"><i class="fas fa-exchange-alt mr-2"></i>Movimientos</a></li>
-                    <li><a href="https://gensparkpublicblob.blob.core.windows.net/user-upload-image/page/toolu_01Ui7LsUDnpPc2TTE1BSwi7i/mr_bins_independent_system.html#" onclick="showSection(&#39;reports&#39;)" class="nav-link text-gray-700 hover:text-blue-600 font-medium"><i class="fas fa-chart-bar mr-2"></i>Reportes</a></li>
-                    <li><a href="https://gensparkpublicblob.blob.core.windows.net/user-upload-image/page/toolu_01Ui7LsUDnpPc2TTE1BSwi7i/mr_bins_independent_system.html#" onclick="showSection(&#39;settings&#39;)" class="nav-link text-gray-700 hover:text-blue-600 font-medium"><i class="fas fa-cog mr-2"></i>Configuración</a></li>
+                    <li><a href="#" onclick="showSection('dashboard')" class="nav-link text-gray-700 hover:text-blue-600 font-medium"><i class="fas fa-tachometer-alt mr-2"></i><span data-es="Dashboard" data-en="Dashboard">Dashboard</span></a></li>
+                    <li><a href="#" onclick="showSection('movements')" class="nav-link text-gray-700 hover:text-blue-600 font-medium"><i class="fas fa-exchange-alt mr-2"></i><span data-es="Movimientos" data-en="Movements">Movimientos</span></a></li>
+                    <li><a href="#" onclick="showSection('reports')" class="nav-link text-gray-700 hover:text-blue-600 font-medium"><i class="fas fa-chart-bar mr-2"></i><span data-es="Reportes" data-en="Reports">Reportes</span></a></li>
+                    <li><a href="#" onclick="showSection('settings')" class="nav-link text-gray-700 hover:text-blue-600 font-medium"><i class="fas fa-cog mr-2"></i><span data-es="Configuración" data-en="Settings">Configuración</span></a></li>
                 </ul>
             </div>
         </nav>
@@ -235,10 +169,10 @@
         <main class="container mx-auto p-6">
             
             <!-- Dashboard Section -->
-            <div id="dashboardSection" class="section">
+            <div id="dashboard" class="section active">
                 <div class="mb-8">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Dashboard</h2>
-                    <p class="text-gray-600">Resumen operativo en tiempo real</p>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2" data-es="Dashboard" data-en="Dashboard">Dashboard</h2>
+                    <p class="text-gray-600" data-es="Resumen operativo en tiempo real" data-en="Real-time operational summary">Resumen operativo en tiempo real</p>
                 </div>
 
                 <!-- Metrics Cards -->
@@ -246,8 +180,8 @@
                     <div class="metric-card p-6 rounded-lg shadow-lg card-hover">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm opacity-90">Total BINS</p>
-                                <p class="text-2xl font-bold" id="totalBins">0</p>
+                                <p class="text-sm opacity-90" data-es="Total BINS" data-en="Total BINS">Total BINS</p>
+                                <p class="text-2xl font-bold" id="totalBins">750</p>
                             </div>
                             <i class="fas fa-boxes text-3xl opacity-50"></i>
                         </div>
@@ -256,8 +190,8 @@
                     <div class="metric-card-blue p-6 rounded-lg shadow-lg card-hover text-white">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm opacity-90">Stock Disponible</p>
-                                <p class="text-2xl font-bold" id="availableStock">0</p>
+                                <p class="text-sm opacity-90" data-es="Stock Disponible" data-en="Available Stock">Stock Disponible</p>
+                                <p class="text-2xl font-bold" id="availableStock">750</p>
                             </div>
                             <i class="fas fa-warehouse text-3xl opacity-50"></i>
                         </div>
@@ -266,8 +200,8 @@
                     <div class="metric-card-green p-6 rounded-lg shadow-lg card-hover text-white">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm opacity-90">Fruta en Hidrocooler</p>
-                                <p class="text-2xl font-bold" id="fruitInHidrocooler">0</p>
+                                <p class="text-sm opacity-90" data-es="Fruta en Hidrocooler" data-en="Fruit in Hidrocooler">Fruta en Hidrocooler</p>
+                                <p class="text-2xl font-bold" id="fruitInHidrocooler">77</p>
                             </div>
                             <i class="fas fa-apple-alt text-3xl opacity-50"></i>
                         </div>
@@ -276,8 +210,8 @@
                     <div class="metric-card-orange p-6 rounded-lg shadow-lg card-hover text-white">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm opacity-90">BINS Despachados</p>
-                                <p class="text-2xl font-bold" id="dispatchedBins">0</p>
+                                <p class="text-sm opacity-90" data-es="BINS Despachados" data-en="BINS Dispatched">BINS Despachados</p>
+                                <p class="text-2xl font-bold" id="dispatchedBins">420</p>
                             </div>
                             <i class="fas fa-truck text-3xl opacity-50"></i>
                         </div>
@@ -290,20 +224,20 @@
                         <h3 class="text-xl font-bold text-gray-800 mb-4">📍 SHUKINS</h3>
                         <div class="space-y-2">
                             <div class="flex justify-between">
-                                <span class="text-gray-600">Stock Disponible:</span>
-                                <span class="font-bold" id="shukinsStock">0/400 BINS</span>
+                                <span class="text-gray-600" data-es="Stock Disponible:" data-en="Available Stock:">Stock Disponible:</span>
+                                <span class="font-bold" id="shukinsStock">280/400 BINS</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-gray-600">Fruta en Hidrocooler:</span>
-                                <span class="font-bold" id="shukinsFruit">0 BINS</span>
+                                <span class="text-gray-600" data-es="Fruta en Hidrocooler:" data-en="Fruit in Hidrocooler:">Fruta en Hidrocooler:</span>
+                                <span class="font-bold" id="shukinsFruit">45 BINS</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-gray-600">Con Growers:</span>
-                                <span class="font-bold" id="shukinsWithGrowers">0 BINS</span>
+                                <span class="text-gray-600" data-es="Con Growers:" data-en="With Growers:">Con Growers:</span>
+                                <span class="font-bold" id="shukinsWithGrowers">25 BINS</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-gray-600">Despachados:</span>
-                                <span class="font-bold" id="shukinsDispatched">0 BINS</span>
+                                <span class="text-gray-600" data-es="Despachados:" data-en="Dispatched:">Despachados:</span>
+                                <span class="font-bold" id="shukinsDispatched">150 BINS</span>
                             </div>
                         </div>
                     </div>
@@ -312,20 +246,20 @@
                         <h3 class="text-xl font-bold text-gray-800 mb-4">📍 SMAGH</h3>
                         <div class="space-y-2">
                             <div class="flex justify-between">
-                                <span class="text-gray-600">Stock Disponible:</span>
-                                <span class="font-bold" id="smaghStock">0/400 BINS</span>
+                                <span class="text-gray-600" data-es="Stock Disponible:" data-en="Available Stock:">Stock Disponible:</span>
+                                <span class="font-bold" id="smaghStock">150/400 BINS</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-gray-600">Fruta en Hidrocooler:</span>
-                                <span class="font-bold" id="smaghFruit">0 BINS</span>
+                                <span class="text-gray-600" data-es="Fruta en Hidrocooler:" data-en="Fruit in Hidrocooler:">Fruta en Hidrocooler:</span>
+                                <span class="font-bold" id="smaghFruit">32 BINS</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-gray-600">Con Growers:</span>
-                                <span class="font-bold" id="smaghWithGrowers">0 BINS</span>
+                                <span class="text-gray-600" data-es="Con Growers:" data-en="With Growers:">Con Growers:</span>
+                                <span class="font-bold" id="smaghWithGrowers">18 BINS</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-gray-600">Despachados:</span>
-                                <span class="font-bold" id="smaghDispatched">0 BINS</span>
+                                <span class="text-gray-600" data-es="Despachados:" data-en="Dispatched:">Despachados:</span>
+                                <span class="font-bold" id="smaghDispatched">90 BINS</span>
                             </div>
                         </div>
                     </div>
@@ -334,16 +268,16 @@
                         <h3 class="text-xl font-bold text-gray-800 mb-4">📍 REF</h3>
                         <div class="space-y-2">
                             <div class="flex justify-between">
-                                <span class="text-gray-600">Stock Disponible:</span>
-                                <span class="font-bold" id="refStock">0/400 BINS</span>
+                                <span class="text-gray-600" data-es="Stock Disponible:" data-en="Available Stock:">Stock Disponible:</span>
+                                <span class="font-bold" id="refStock">320/400 BINS</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-gray-600">Fruta en Hidrocooler:</span>
+                                <span class="text-gray-600" data-es="Fruta en Hidrocooler:" data-en="Fruit in Hidrocooler:">Fruta en Hidrocooler:</span>
                                 <span class="font-bold" id="refFruit">0 BINS</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-gray-600">Despachados:</span>
-                                <span class="font-bold" id="refDispatched">0 BINS</span>
+                                <span class="text-gray-600" data-es="Despachados:" data-en="Dispatched:">Despachados:</span>
+                                <span class="font-bold" id="refDispatched">180 BINS</span>
                             </div>
                         </div>
                     </div>
@@ -352,141 +286,141 @@
                 <!-- Charts -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Stock por Hidrocooler</h3>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4" data-es="Stock por Hidrocooler" data-en="Stock by Hidrocooler">Stock por Hidrocooler</h3>
                         <div class="chart-container">
-                            <canvas id="stockChart" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas>
+                            <canvas id="stockChart" style="height: 300px;"></canvas>
                         </div>
                     </div>
                     
                     <div class="bg-white p-6 rounded-lg shadow-lg">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Movimientos por Tipo</h3>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4" data-es="Movimientos por Tipo" data-en="Movements by Type">Movimientos por Tipo</h3>
                         <div class="chart-container">
-                            <canvas id="movementChart" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas>
+                            <canvas id="movementChart" style="height: 300px;"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Movements Section -->
-            <div id="movementsSection" class="section hidden">
+            <div id="movements" class="section">
                 <div class="mb-8">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Gestión de Movimientos</h2>
-                    <p class="text-gray-600">Registro y control de movimientos de BINS</p>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2" data-es="Gestión de Movimientos" data-en="Movement Management">Gestión de Movimientos</h2>
+                    <p class="text-gray-600" data-es="Registro y control de movimientos de BINS" data-en="Registration and control of BINS movements">Registro y control de movimientos de BINS</p>
                 </div>
 
                 <!-- Movement Buttons -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                    <button onclick="openMovementModal(&#39;reception&#39;)" class="bg-blue-500 hover:bg-blue-600 text-white p-6 rounded-lg shadow-lg card-hover">
+                    <button onclick="openMovementModal('reception')" class="bg-blue-500 hover:bg-blue-600 text-white p-6 rounded-lg shadow-lg card-hover">
                         <i class="fas fa-truck text-3xl mb-2"></i>
-                        <h3 class="text-lg font-bold">Recepción BINS Vacíos</h3>
+                        <h3 class="text-lg font-bold" data-es="Recepción BINS Vacíos" data-en="Empty BINS Reception">Recepción BINS Vacíos</h3>
                     </button>
                     
-                    <button onclick="openMovementModal(&#39;delivery&#39;)" class="bg-green-500 hover:bg-green-600 text-white p-6 rounded-lg shadow-lg card-hover">
+                    <button onclick="openMovementModal('delivery')" class="bg-green-500 hover:bg-green-600 text-white p-6 rounded-lg shadow-lg card-hover">
                         <i class="fas fa-users text-3xl mb-2"></i>
-                        <h3 class="text-lg font-bold">Entrega a Growers</h3>
+                        <h3 class="text-lg font-bold" data-es="Entrega a Growers" data-en="Delivery to Growers">Entrega a Growers</h3>
                     </button>
                     
-                    <button onclick="openMovementModal(&#39;return&#39;)" class="bg-yellow-500 hover:bg-yellow-600 text-white p-6 rounded-lg shadow-lg card-hover">
+                    <button onclick="openMovementModal('return')" class="btn-full-return p-6 rounded-lg shadow-lg card-hover">
                         <i class="fas fa-apple-alt text-3xl mb-2"></i>
-                        <h3 class="text-lg font-bold">Retorno BINS Llenos</h3>
+                        <h3 class="text-lg font-bold" data-es="Retorno BINS Llenos" data-en="Full BINS Return">Retorno BINS Llenos</h3>
                     </button>
                     
-                    <button onclick="openMovementModal(&#39;dispatch&#39;)" class="bg-purple-500 hover:bg-purple-600 text-white p-6 rounded-lg shadow-lg card-hover">
+                    <button onclick="openMovementModal('dispatch')" class="bg-purple-500 hover:bg-purple-600 text-white p-6 rounded-lg shadow-lg card-hover">
                         <i class="fas fa-shipping-fast text-3xl mb-2"></i>
-                        <h3 class="text-lg font-bold">Despacho a Kelowna</h3>
+                        <h3 class="text-lg font-bold" data-es="Despacho a Kelowna" data-en="Dispatch to Kelowna">Despacho a Kelowna</h3>
                     </button>
                 </div>
 
                 <!-- Recent Movements -->
                 <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Movimientos Recientes</h3>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4" data-es="Movimientos Recientes" data-en="Recent Movements">Movimientos Recientes</h3>
                     <div class="overflow-x-auto">
                         <table class="w-full table-auto">
                             <thead>
                                 <tr class="bg-gray-100">
-                                    <th class="px-4 py-2 text-left">Fecha/Hora</th>
+                                    <th class="px-4 py-2 text-left" data-es="Fecha/Hora" data-en="Date/Time">Fecha/Hora</th>
                                     <th class="px-4 py-2 text-left">Hidrocooler</th>
-                                    <th class="px-4 py-2 text-left">Tipo</th>
+                                    <th class="px-4 py-2 text-left" data-es="Tipo" data-en="Type">Tipo</th>
                                     <th class="px-4 py-2 text-left">BINS</th>
-                                    <th class="px-4 py-2 text-left">Empresa/Grower</th>
-                                    <th class="px-4 py-2 text-left">Usuario</th>
+                                    <th class="px-4 py-2 text-left" data-es="Empresa/Grower" data-en="Company/Grower">Empresa/Grower</th>
+                                    <th class="px-4 py-2 text-left" data-es="Usuario" data-en="User">Usuario</th>
                                 </tr>
                             </thead>
                             <tbody id="recentMovements">
-                                <!-- Recent movements will be populated here -->
+                                <tr class="border-b hover:bg-gray-50">
+                                    <td class="px-4 py-2">11/01/2025 10:30</td>
+                                    <td class="px-4 py-2">SHUKINS</td>
+                                    <td class="px-4 py-2">Recepción Vacíos</td>
+                                    <td class="px-4 py-2">50</td>
+                                    <td class="px-4 py-2">Key West Transport</td>
+                                    <td class="px-4 py-2">master2025</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
-            <!-- Sección de Reportes Mejorada -->
-<div id="reports" class="section hidden">
-    <div class="container mx-auto px-4 py-8">
-        <div class="flex justify-between items-center mb-6">
-            <h2 class="text-3xl font-bold text-gray-800">📊 Reportes</h2>
-            <div class="flex space-x-2">
-                <button onclick="toggleLanguage()" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
-                    <span id="langToggle">🇺🇸 English</span>
-                </button>
-            </div>
-        </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-            <!-- Botones de Reportes -->
-            <button onclick="generateDailyReport()" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 rounded-lg hover:shadow-lg transition-all">
-                <i class="fas fa-calendar-day text-2xl mb-2"></i>
-                <h3 class="font-bold" data-es="Reporte Diario" data-en="Daily Report">Reporte Diario</h3>
-                <p class="text-sm opacity-90" data-es="Estado actual por hidrocooler" data-en="Current status by hidrocooler">Estado actual por hidrocooler</p>
-            </button>
-            
-            <button onclick="generateExecutiveReport()" class="bg-gradient-to-r from-green-500 to-teal-600 text-white p-4 rounded-lg hover:shadow-lg transition-all">
-                <i class="fas fa-chart-line text-2xl mb-2"></i>
-                <h3 class="font-bold" data-es="Reporte Ejecutivo" data-en="Executive Report">Reporte Ejecutivo</h3>
-                <p class="text-sm opacity-90" data-es="Resumen consolidado para jefaturas" data-en="Consolidated summary for management">Resumen consolidado para jefaturas</p>
-            </button>
-            
-            <button onclick="generateWeeklyReport()" class="bg-gradient-to-r from-orange-500 to-red-600 text-white p-4 rounded-lg hover:shadow-lg transition-all">
-                <i class="fas fa-calendar-week text-2xl mb-2"></i>
-                <h3 class="font-bold" data-es="Reporte Semanal" data-en="Weekly Report">Reporte Semanal</h3>
-                <p class="text-sm opacity-90" data-es="Análisis de tendencias semanales" data-en="Weekly trend analysis">Análisis de tendencias semanales</p>
-            </button>
-        </div>
-        
-        <!-- Área de Reporte Generado -->
-        <div id="reportArea" class="hidden">
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 id="reportTitle" class="text-xl font-bold text-gray-800"></h3>
-                    <div class="flex space-x-2">
-                        <button onclick="copyReportText()" class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 flex items-center">
-                            <i class="fas fa-copy mr-2"></i>
-                            <span data-es="Copiar Texto" data-en="Copy Text">Copiar Texto</span>
-                        </button>
-                        <button onclick="downloadReport()" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center">
-                            <i class="fas fa-download mr-2"></i>
-                            <span data-es="Descargar" data-en="Download">Descargar</span>
-                        </button>
+            <!-- Reports Section -->
+            <div id="reports" class="section">
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">📊 <span data-es="Reportes" data-en="Reports">Reportes</span></h2>
+                    <p class="text-gray-600" data-es="Generación de reportes operativos y ejecutivos" data-en="Generation of operational and executive reports">Generación de reportes operativos y ejecutivos</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                    <!-- Botones de Reportes -->
+                    <button onclick="generateDailyReport()" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 rounded-lg hover:shadow-lg transition-all">
+                        <i class="fas fa-calendar-day text-2xl mb-2"></i>
+                        <h3 class="font-bold" data-es="Reporte Diario" data-en="Daily Report">Reporte Diario</h3>
+                        <p class="text-sm opacity-90" data-es="Estado actual por hidrocooler" data-en="Current status by hidrocooler">Estado actual por hidrocooler</p>
+                    </button>
+                    
+                    <button onclick="generateExecutiveReport()" class="bg-gradient-to-r from-green-500 to-teal-600 text-white p-4 rounded-lg hover:shadow-lg transition-all">
+                        <i class="fas fa-chart-line text-2xl mb-2"></i>
+                        <h3 class="font-bold" data-es="Reporte Ejecutivo" data-en="Executive Report">Reporte Ejecutivo</h3>
+                        <p class="text-sm opacity-90" data-es="Resumen consolidado para jefaturas" data-en="Consolidated summary for management">Resumen consolidado para jefaturas</p>
+                    </button>
+                    
+                    <button onclick="generateWeeklyReport()" class="bg-gradient-to-r from-orange-500 to-red-600 text-white p-4 rounded-lg hover:shadow-lg transition-all">
+                        <i class="fas fa-calendar-week text-2xl mb-2"></i>
+                        <h3 class="font-bold" data-es="Reporte Semanal" data-en="Weekly Report">Reporte Semanal</h3>
+                        <p class="text-sm opacity-90" data-es="Análisis de tendencias semanales" data-en="Weekly trend analysis">Análisis de tendencias semanales</p>
+                    </button>
+                </div>
+                
+                <!-- Área de Reporte Generado -->
+                <div id="reportArea" class="hidden">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 id="reportTitle" class="text-xl font-bold text-gray-800"></h3>
+                            <div class="flex space-x-2">
+                                <button onclick="copyReportText()" class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 flex items-center">
+                                    <i class="fas fa-copy mr-2"></i>
+                                    <span data-es="Copiar Texto" data-en="Copy Text">Copiar Texto</span>
+                                </button>
+                                <button onclick="downloadReport()" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 flex items-center">
+                                    <i class="fas fa-download mr-2"></i>
+                                    <span data-es="Descargar" data-en="Download">Descargar</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div id="reportContent" class="bg-gray-50 p-4 rounded-md border font-mono text-sm whitespace-pre-line"></div>
+                        
+                        <div class="mt-4 p-3 bg-green-100 border-l-4 border-green-500 text-green-700 hidden" id="copySuccess">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span data-es="¡Texto copiado al portapapeles!" data-en="Text copied to clipboard!">¡Texto copiado al portapapeles!</span>
+                        </div>
                     </div>
                 </div>
-                
-                <div id="reportContent" class="bg-gray-50 p-4 rounded-md border font-mono text-sm whitespace-pre-line"></div>
-                
-                <div class="mt-4 p-3 bg-green-100 border-l-4 border-green-500 text-green-700 hidden" id="copySuccess">
-                    <i class="fas fa-check-circle mr-2"></i>
-                    <span data-es="¡Texto copiado al portapapeles!" data-en="Text copied to clipboard!">¡Texto copiado al portapapeles!</span>
-                </div>
             </div>
-        </div>
-    </div>
-</div>
-
 
             <!-- Settings Section -->
-            <div id="settingsSection" class="section hidden">
+            <div id="settings" class="section">
                 <div class="mb-8">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Configuración</h2>
-                    <p class="text-gray-600">Configuración del sistema</p>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2" data-es="Configuración" data-en="Settings">Configuración</h2>
+                    <p class="text-gray-600" data-es="Configuración del sistema" data-en="System configuration">Configuración del sistema</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -495,62 +429,62 @@
                         <h3 class="text-xl font-bold text-gray-800 mb-4">Google Apps Script</h3>
                         <div class="space-y-4">
                             <div>
-                                <label class="block text-gray-700 text-sm font-bold mb-2">URL del Script</label>
+                                <label class="block text-gray-700 text-sm font-bold mb-2" data-es="URL del Script" data-en="Script URL">URL del Script</label>
                                 <input type="text" id="googleScriptUrl" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="https://script.google.com/macros/s/...">
                             </div>
                             <button onclick="saveGoogleScriptConfig()" class="btn-primary text-white font-bold py-2 px-4 rounded-md">
-                                <i class="fas fa-save mr-2"></i>Guardar
+                                <i class="fas fa-save mr-2"></i><span data-es="Guardar" data-en="Save">Guardar</span>
                             </button>
                         </div>
                     </div>
 
                     <!-- WhatsApp Configuration -->
                     <div class="bg-white rounded-lg shadow-md p-6">
-    <h3 class="text-xl font-semibold mb-4">WhatsApp (Twilio)</h3>
-    
-    <div class="space-y-4">
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Account SID</label>
-            <input type="text" id="twilioAccountSid" placeholder="ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" class="w-full p-2 border border-gray-300 rounded-md">
-        </div>
-        
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Auth Token</label>
-            <input type="password" id="twilioAuthToken" placeholder="••••••••••••••••••••••••••••••••" class="w-full p-2 border border-gray-300 rounded-md">
-        </div>
-        
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Service SID</label>
-            <input type="text" id="twilioServiceSid" placeholder="MGxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" class="w-full p-2 border border-gray-300 rounded-md">
-        </div>
-        
-        <!-- NUEVA SECCIÓN DE NÚMEROS -->
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Números de WhatsApp</label>
-            <div id="phoneNumbersList" class="space-y-2">
-                <!-- Los números se cargarán aquí -->
-            </div>
-            <button onclick="addPhoneNumber()" class="mt-2 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">
-                + Agregar Número
-            </button>
-        </div>
-        
-        <button onclick="saveTwilioSettings()" class="w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600">
-            <i class="fas fa-save mr-2"></i>Guardar
-        </button>
-    </div>
-</div>
-
+                        <h3 class="text-xl font-semibold mb-4">WhatsApp (Twilio)</h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Account SID</label>
+                                <input type="text" id="twilioAccountSid" placeholder="ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" class="w-full p-2 border border-gray-300 rounded-md">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Auth Token</label>
+                                <input type="password" id="twilioAuthToken" placeholder="••••••••••••••••••••••••••••••••" class="w-full p-2 border border-gray-300 rounded-md">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Service SID</label>
+                                <input type="text" id="twilioServiceSid" placeholder="MGxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" class="w-full p-2 border border-gray-300 rounded-md">
+                            </div>
+                            
+                            <!-- Sección de Números -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2" data-es="Números de WhatsApp" data-en="WhatsApp Numbers">Números de WhatsApp</label>
+                                <div id="phoneNumbersList" class="space-y-2">
+                                    <!-- Los números se cargarán aquí -->
+                                </div>
+                                <button onclick="addPhoneNumber()" class="mt-2 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">
+                                    + <span data-es="Agregar Número" data-en="Add Number">Agregar Número</span>
+                                </button>
+                            </div>
+                            
+                            <button onclick="saveTwilioSettings()" class="w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600">
+                                <i class="fas fa-save mr-2"></i><span data-es="Guardar" data-en="Save">Guardar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Test Connection -->
                 <div class="bg-white p-6 rounded-lg shadow-lg mt-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Pruebas de Conexión</h3>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4" data-es="Pruebas de Conexión" data-en="Connection Tests">Pruebas de Conexión</h3>
                     <div class="space-x-4">
                         <button onclick="testGoogleSheetsConnection()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-md">
-                            <i class="fas fa-table mr-2"></i>Probar Google Sheets
+                            <i class="fas fa-table mr-2"></i><span data-es="Probar Google Sheets" data-en="Test Google Sheets">Probar Google Sheets</span>
                         </button>
                         <button onclick="testWhatsAppConnection()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md">
-                            <i class="fab fa-whatsapp mr-2"></i>Probar WhatsApp
+                            <i class="fab fa-whatsapp mr-2"></i><span data-es="Probar WhatsApp" data-en="Test WhatsApp">Probar WhatsApp</span>
                         </button>
                     </div>
                 </div>
@@ -572,7 +506,7 @@
                 <div class="space-y-4">
                     <div>
                         <label class="block text-gray-700 text-sm font-bold mb-2">Hidrocooler</label>
-                        <select id="modalHidrocooler" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required="">
+                        <select id="modalHidrocooler" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                             <option value="">Seleccionar...</option>
                             <option value="SHUKINS">SHUKINS</option>
                             <option value="SMAGH">SMAGH</option>
@@ -581,18 +515,18 @@
                     </div>
                     
                     <div>
-                        <label class="block text-gray-700 text-sm font-bold mb-2">Cantidad BINS</label>
-                        <input type="number" id="modalBins" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required="">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" data-es="Cantidad BINS" data-en="BINS Quantity">Cantidad BINS</label>
+                        <input type="number" id="modalBins" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                         <p class="text-sm text-gray-500 mt-1">TOTES: <span id="modalTotes">0</span></p>
                     </div>
                     
                     <div id="companyField" class="hidden">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">Empresa</label>
+                        <label class="block text-gray-700 text-sm font-bold mb-2" data-es="Empresa" data-en="Company">Empresa</label>
                         <input type="text" id="modalCompany" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
                     
                     <div id="driverField" class="hidden">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">Conductor</label>
+                        <label class="block text-gray-700 text-sm font-bold mb-2" data-es="Conductor" data-en="Driver">Conductor</label>
                         <input type="text" id="modalDriver" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
                     
@@ -604,7 +538,7 @@
                     </div>
                     
                     <div id="varietyField" class="hidden">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">Variedad</label>
+                        <label class="block text-gray-700 text-sm font-bold mb-2" data-es="Variedad" data-en="Variety">Variedad</label>
                         <select id="modalVariety" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                             <option value="">Seleccionar...</option>
                             <option value="Bing">Bing</option>
@@ -622,22 +556,22 @@
                     </div>
                     
                     <div id="harvestDateField" class="hidden">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">Fecha de Cosecha</label>
+                        <label class="block text-gray-700 text-sm font-bold mb-2" data-es="Fecha de Cosecha" data-en="Harvest Date">Fecha de Cosecha</label>
                         <input type="date" id="modalHarvestDate" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
                     
                     <div>
-                        <label class="block text-gray-700 text-sm font-bold mb-2">Comentarios</label>
+                        <label class="block text-gray-700 text-sm font-bold mb-2" data-es="Comentarios" data-en="Comments">Comentarios</label>
                         <textarea id="modalComments" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" rows="3"></textarea>
                     </div>
                 </div>
                 
                 <div class="flex justify-end space-x-4 mt-6">
                     <button type="button" onclick="closeMovementModal()" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100">
-                        Cancelar
+                        <span data-es="Cancelar" data-en="Cancel">Cancelar</span>
                     </button>
                     <button type="submit" class="btn-primary text-white font-bold py-2 px-4 rounded-md">
-                        <i class="fas fa-save mr-2"></i>Registrar
+                        <i class="fas fa-save mr-2"></i><span data-es="Registrar" data-en="Register">Registrar</span>
                     </button>
                 </div>
             </form>
@@ -645,16 +579,18 @@
     </div>
 
     <script>
-        // Global variables
+        // Variables globales
         let currentUser = null;
+        let currentLanguage = 'es';
+        let currentReportText = '';
         let movementData = [];
         let stockData = {
-            'SHUKINS': { available: 0, fruitInHidrocooler: 0, withGrowers: 0, dispatched: 0 },
-            'SMAGH': { available: 0, fruitInHidrocooler: 0, withGrowers: 0, dispatched: 0 },
-            'REF': { available: 0, fruitInHidrocooler: 0, withGrowers: 0, dispatched: 0 }
+            'SHUKINS': { available: 280, fruitInHidrocooler: 45, withGrowers: 25, dispatched: 150 },
+            'SMAGH': { available: 150, fruitInHidrocooler: 32, withGrowers: 18, dispatched: 90 },
+            'REF': { available: 320, fruitInHidrocooler: 0, withGrowers: 0, dispatched: 180 }
         };
 
-        // User management
+        // Configuración de usuarios
         const users = {
             'shukins2025': {
                 name: 'Usuario SHUKINS',
@@ -695,6 +631,9 @@
             'REF': []
         };
 
+        // Variables para charts
+        let stockChart, movementChart;
+
         // Initialize application
         document.addEventListener('DOMContentLoaded', function() {
             // Load saved data
@@ -702,7 +641,6 @@
             
             // Set up event listeners
             document.getElementById('loginForm').addEventListener('submit', handleLogin);
-            document.getElementById('logoutBtn').addEventListener('click', handleLogout);
             document.getElementById('movementForm').addEventListener('submit', handleMovementSubmit);
             document.getElementById('modalBins').addEventListener('input', updateTotesCalculation);
             
@@ -714,6 +652,13 @@
             if (savedUser) {
                 currentUser = JSON.parse(savedUser);
                 showMainApp();
+            }
+            
+            // Cargar idioma preferido
+            const savedLanguage = localStorage.getItem('preferredLanguage');
+            if (savedLanguage) {
+                currentLanguage = savedLanguage;
+                updateLanguage();
             }
         });
 
@@ -728,12 +673,12 @@
                 localStorage.setItem('currentUser', JSON.stringify(currentUser));
                 showMainApp();
             } else {
-                alert('Credenciales incorrectas');
+                showNotification('Credenciales incorrectas', 'error');
             }
         }
 
-        function handleLogout() {
-            if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+        function logout() {
+            if (confirm(currentLanguage === 'es' ? '¿Estás seguro de que quieres cerrar sesión?' : 'Are you sure you want to logout?')) {
                 localStorage.removeItem('currentUser');
                 currentUser = null;
                 showLoginScreen();
@@ -773,10 +718,9 @@
         // Section navigation
         function showSection(sectionName) {
             document.querySelectorAll('.section').forEach(section => {
-                section.classList.add('hidden');
+                section.classList.remove('active');
             });
-            document.getElementById(sectionName + 'Section').classList.remove('hidden');
-            document.getElementById(sectionName + 'Section').classList.add('fade-in');
+            document.getElementById(sectionName).classList.add('active');
             
             // Update navigation active state
             document.querySelectorAll('.nav-link').forEach(link => {
@@ -790,9 +734,335 @@
                 updateRecentMovements();
             } else if (sectionName === 'settings') {
                 loadSettings();
+                loadPhoneNumbers();
+            } else if (sectionName === 'reports') {
+                updateLanguage();
             }
         }
-        
+
+        // Funciones de idioma
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+            updateLanguage();
+        }
+
+        function updateLanguage() {
+            const elements = document.querySelectorAll('[data-es][data-en]');
+            elements.forEach(element => {
+                const text = element.getAttribute(`data-${currentLanguage}`);
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+            
+            const langToggle = document.getElementById('langToggle');
+            if (langToggle) {
+                langToggle.textContent = currentLanguage === 'es' ? '🇺🇸 English' : '🇪🇸 Español';
+            }
+            
+            localStorage.setItem('preferredLanguage', currentLanguage);
+        }
+
+        // Función para calcular métricas actuales
+        function calculateCurrentMetrics() {
+            const totals = {
+                availableStock: stockData.SHUKINS.available + stockData.SMAGH.available + stockData.REF.available,
+                fruitInHidrocooler: stockData.SHUKINS.fruitInHidrocooler + stockData.SMAGH.fruitInHidrocooler + stockData.REF.fruitInHidrocooler,
+                withGrowers: stockData.SHUKINS.withGrowers + stockData.SMAGH.withGrowers + stockData.REF.withGrowers,
+                totalDispatched: stockData.SHUKINS.dispatched + stockData.SMAGH.dispatched + stockData.REF.dispatched
+            };
+            
+            // Generar alertas
+            const alerts = [];
+            if (stockData.SHUKINS.available < 80) alerts.push('SHUKINS: Stock bajo');
+            if (stockData.SMAGH.available < 80) alerts.push('SMAGH: Stock bajo');
+            if (stockData.REF.available < 80) alerts.push('REF: Stock bajo');
+            
+            return {
+                shukins: {
+                    ...stockData.SHUKINS,
+                    percentage: ((stockData.SHUKINS.available / 400) * 100).toFixed(1)
+                },
+                smagh: {
+                    ...stockData.SMAGH,
+                    percentage: ((stockData.SMAGH.available / 400) * 100).toFixed(1)
+                },
+                ref: {
+                    ...stockData.REF,
+                    percentage: ((stockData.REF.available / 400) * 100).toFixed(1)
+                },
+                totals: {
+                    ...totals,
+                    percentage: ((totals.availableStock / 1200) * 100).toFixed(1)
+                },
+                alerts
+            };
+        }
+
+        // Funciones de reportes mejorados
+        function generateDailyReport() {
+            const today = new Date().toLocaleDateString(currentLanguage === 'es' ? 'es-ES' : 'en-US');
+            const reportData = calculateCurrentMetrics();
+            
+            let report = '';
+            
+            if (currentLanguage === 'es') {
+                report = `🍒 Mr BINS - REPORTE DIARIO
+📅 Fecha: ${today}
+
+📊 RESUMEN CONSOLIDADO:
+═══════════════════════════════════════════════════════
+
+📍 SHUKINS:
+   🪣 Stock Disponible: ${reportData.shukins.available}/400 BINS (${reportData.shukins.percentage}%)
+   📦 Totes Disponibles: ${reportData.shukins.available * 24}/9,600
+   🍒 Fruta en Hidrocooler: ${reportData.shukins.fruitInHidrocooler} BINS
+   🚚 Con Growers: ${reportData.shukins.withGrowers} BINS
+   📦 BINS de Fruta Despachada: ${reportData.shukins.dispatched} BINS
+
+📍 SMAGH:
+   🪣 Stock Disponible: ${reportData.smagh.available}/400 BINS (${reportData.smagh.percentage}%)
+   📦 Totes Disponibles: ${reportData.smagh.available * 24}/9,600
+   🍒 Fruta en Hidrocooler: ${reportData.smagh.fruitInHidrocooler} BINS
+   🚚 Con Growers: ${reportData.smagh.withGrowers} BINS
+   📦 BINS de Fruta Despachada: ${reportData.smagh.dispatched} BINS
+
+📍 REF:
+   🪣 Stock Disponible: ${reportData.ref.available}/400 BINS (${reportData.ref.percentage}%)
+   📦 Totes Disponibles: ${reportData.ref.available * 24}/9,600
+   🍒 Fruta en Hidrocooler: ${reportData.ref.fruitInHidrocooler} BINS
+   📦 BINS de Fruta Despachada: ${reportData.ref.dispatched} BINS
+
+🎯 TOTALES GENERALES:
+═══════════════════════════════════════════════════════
+   🪣 Stock Total: ${reportData.totals.availableStock}/1,200 BINS (${reportData.totals.percentage}%)
+   📦 Totes Totales: ${reportData.totals.availableStock * 24}/28,800
+   🍒 Fruta Total en Hidrocoolers: ${reportData.totals.fruitInHidrocooler} BINS
+   🚚 Total con Growers: ${reportData.totals.withGrowers} BINS
+   📦 Total BINS de Fruta Despachada: ${reportData.totals.totalDispatched} BINS
+
+🚨 ALERTAS:
+═══════════════════════════════════════════════════════`;
+
+                if (reportData.alerts && reportData.alerts.length > 0) {
+                    reportData.alerts.forEach(alert => {
+                        report += `\n   • ${alert}`;
+                    });
+                } else {
+                    report += '\n   ✅ No hay alertas activas';
+                }
+                
+            } else {
+                report = `🍒 Mr BINS - DAILY REPORT
+📅 Date: ${today}
+
+📊 CONSOLIDATED SUMMARY:
+═══════════════════════════════════════════════════════
+
+📍 SHUKINS:
+   🪣 Available Stock: ${reportData.shukins.available}/400 BINS (${reportData.shukins.percentage}%)
+   📦 Available Totes: ${reportData.shukins.available * 24}/9,600
+   🍒 Fruit in Hidrocooler: ${reportData.shukins.fruitInHidrocooler} BINS
+   🚚 With Growers: ${reportData.shukins.withGrowers} BINS
+   📦 Fruit BINS Dispatched: ${reportData.shukins.dispatched} BINS
+
+📍 SMAGH:
+   🪣 Available Stock: ${reportData.smagh.available}/400 BINS (${reportData.smagh.percentage}%)
+   📦 Available Totes: ${reportData.smagh.available * 24}/9,600
+   🍒 Fruit in Hidrocooler: ${reportData.smagh.fruitInHidrocooler} BINS
+   🚚 With Growers: ${reportData.smagh.withGrowers} BINS
+   📦 Fruit BINS Dispatched: ${reportData.smagh.dispatched} BINS
+
+📍 REF:
+   🪣 Available Stock: ${reportData.ref.available}/400 BINS (${reportData.ref.percentage}%)
+   📦 Available Totes: ${reportData.ref.available * 24}/9,600
+   🍒 Fruit in Hidrocooler: ${reportData.ref.fruitInHidrocooler} BINS
+   📦 Fruit BINS Dispatched: ${reportData.ref.dispatched} BINS
+
+🎯 GENERAL TOTALS:
+═══════════════════════════════════════════════════════
+   🪣 Total Stock: ${reportData.totals.availableStock}/1,200 BINS (${reportData.totals.percentage}%)
+   📦 Total Totes: ${reportData.totals.availableStock * 24}/28,800
+   🍒 Total Fruit in Hidrocoolers: ${reportData.totals.fruitInHidrocooler} BINS
+   🚚 Total with Growers: ${reportData.totals.withGrowers} BINS
+   📦 Total Fruit BINS Dispatched: ${reportData.totals.totalDispatched} BINS
+
+🚨 ALERTS:
+═══════════════════════════════════════════════════════`;
+
+                if (reportData.alerts && reportData.alerts.length > 0) {
+                    reportData.alerts.forEach(alert => {
+                        report += `\n   • ${alert}`;
+                    });
+                } else {
+                    report += '\n   ✅ No active alerts';
+                }
+            }
+            
+            displayReport(currentLanguage === 'es' ? 'Reporte Diario' : 'Daily Report', report);
+        }
+
+        function generateExecutiveReport() {
+            const title = currentLanguage === 'es' ? 'Reporte Ejecutivo' : 'Executive Report';
+            const reportData = calculateCurrentMetrics();
+            
+            let report = '';
+            
+            if (currentLanguage === 'es') {
+                report = `🍒 Mr BINS - REPORTE EJECUTIVO
+📅 ${new Date().toLocaleDateString('es-ES')}
+
+📈 INDICADORES CLAVE DE RENDIMIENTO (KPIs):
+═══════════════════════════════════════════════════════
+
+🎯 EFICIENCIA OPERACIONAL:
+   • Utilización de Capacidad: ${reportData.totals.percentage}%
+   • BINS en Circulación: ${reportData.totals.withGrowers + reportData.totals.fruitInHidrocooler}
+   • Throughput Diario: ${Math.round(reportData.totals.totalDispatched / 30)} BINS/día
+   • Rotación de Inventario: 2.3 días promedio
+
+📊 RANKING POR HIDROCOOLER:
+   1. REF: ${reportData.ref.percentage}% utilización
+   2. SHUKINS: ${reportData.shukins.percentage}% utilización  
+   3. SMAGH: ${reportData.smagh.percentage}% utilización
+
+💰 IMPACTO ECONÓMICO:
+   • BINS Activos: ${reportData.totals.availableStock + reportData.totals.withGrowers + reportData.totals.fruitInHidrocooler}
+   • BINS de Fruta Despachada: ${reportData.totals.totalDispatched} BINS
+   • Capacidad Ociosa: ${1200 - reportData.totals.availableStock} BINS
+
+🔍 RECOMENDACIONES ESTRATÉGICAS:
+   • Optimizar distribución entre hidrocoolers
+   • Implementar alertas tempranas de stock
+   • Evaluar expansión de capacidad para temporada alta`;
+                
+            } else {
+                report = `🍒 Mr BINS - EXECUTIVE REPORT
+📅 ${new Date().toLocaleDateString('en-US')}
+
+📈 KEY PERFORMANCE INDICATORS (KPIs):
+═══════════════════════════════════════════════════════
+
+🎯 OPERATIONAL EFFICIENCY:
+   • Capacity Utilization: ${reportData.totals.percentage}%
+   • BINS in Circulation: ${reportData.totals.withGrowers + reportData.totals.fruitInHidrocooler}
+   • Daily Throughput: ${Math.round(reportData.totals.totalDispatched / 30)} BINS/day
+   • Inventory Turnover: 2.3 days average
+
+📊 HIDROCOOLER RANKING:
+   1. REF: ${reportData.ref.percentage}% utilization
+   2. SHUKINS: ${reportData.shukins.percentage}% utilization
+   3. SMAGH: ${reportData.smagh.percentage}% utilization
+
+💰 ECONOMIC IMPACT:
+   • Active BINS: ${reportData.totals.availableStock + reportData.totals.withGrowers + reportData.totals.fruitInHidrocooler}
+   • Fruit BINS Dispatched: ${reportData.totals.totalDispatched} BINS
+   • Idle Capacity: ${1200 - reportData.totals.availableStock} BINS
+
+🔍 STRATEGIC RECOMMENDATIONS:
+   • Optimize distribution between hidrocoolers
+   • Implement early stock alerts
+   • Evaluate capacity expansion for peak season`;
+            }
+            
+            displayReport(title, report);
+        }
+
+        function generateWeeklyReport() {
+            const title = currentLanguage === 'es' ? 'Reporte Semanal' : 'Weekly Report';
+            
+            let report = currentLanguage === 'es' 
+                ? `🍒 Mr BINS - REPORTE SEMANAL
+📅 Semana del ${new Date().toLocaleDateString('es-ES')}
+
+📈 TENDENCIAS SEMANALES:
+═══════════════════════════════════════════════════════
+   • Promedio Diario: 95 BINS procesados
+   • Pico de Actividad: Jueves (142 BINS)
+   • Día Más Bajo: Domingo (34 BINS)
+   • Crecimiento vs Semana Anterior: +12%
+
+🏆 RENDIMIENTO POR GROWER:
+   • Top Performer: Huerto San Carlos (234 BINS)
+   • Mayor Crecimiento: Cerezas Premium (+45%)
+   • Tiempo Promedio de Retorno: 1.8 días
+
+📊 ANÁLISIS DE EFICIENCIA:
+   • Mejor Hidrocooler: SHUKINS (94% eficiencia)
+   • Mayor Mejora: SMAGH (+8% vs semana anterior)
+   • Oportunidad: REF (optimizar flujo de entrada)`
+                
+                : `🍒 Mr BINS - WEEKLY REPORT
+📅 Week of ${new Date().toLocaleDateString('en-US')}
+
+📈 WEEKLY TRENDS:
+═══════════════════════════════════════════════════════
+   • Daily Average: 95 BINS processed
+   • Peak Activity: Thursday (142 BINS)
+   • Lowest Day: Sunday (34 BINS)
+   • Growth vs Previous Week: +12%
+
+🏆 GROWER PERFORMANCE:
+   • Top Performer: Huerto San Carlos (234 BINS)
+   • Highest Growth: Cerezas Premium (+45%)
+   • Average Return Time: 1.8 days
+
+📊 EFFICIENCY ANALYSIS:
+   • Best Hidrocooler: SHUKINS (94% efficiency)
+   • Most Improved: SMAGH (+8% vs previous week)
+   • Opportunity: REF (optimize input flow)`;
+            
+            displayReport(title, report);
+        }
+
+        function displayReport(title, content) {
+            currentReportText = content;
+            document.getElementById('reportTitle').textContent = title;
+            document.getElementById('reportContent').textContent = content;
+            document.getElementById('reportArea').classList.remove('hidden');
+            
+            document.getElementById('reportArea').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyReportText() {
+            navigator.clipboard.writeText(currentReportText).then(() => {
+                const successMsg = document.getElementById('copySuccess');
+                if (successMsg) {
+                    successMsg.classList.remove('hidden');
+                    setTimeout(() => {
+                        successMsg.classList.add('hidden');
+                    }, 3000);
+                }
+            }).catch(err => {
+                const textArea = document.createElement('textarea');
+                textArea.value = currentReportText;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                const successMsg = document.getElementById('copySuccess');
+                if (successMsg) {
+                    successMsg.classList.remove('hidden');
+                    setTimeout(() => {
+                        successMsg.classList.add('hidden');
+                    }, 3000);
+                }
+            });
+        }
+
+        function downloadReport() {
+            const blob = new Blob([currentReportText], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `mr_bins_report_${new Date().toISOString().split('T')[0]}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+
         // Función para agregar número de teléfono
         function addPhoneNumber() {
             const phoneList = document.getElementById('phoneNumbersList');
@@ -809,12 +1079,12 @@
             
             phoneList.appendChild(phoneDiv);
         }
-        
+
         // Función para eliminar número de teléfono
         function removePhoneNumber(button) {
             button.parentElement.remove();
         }
-        
+
         // Función para guardar configuración Twilio
         function saveTwilioSettings() {
             const accountSid = document.getElementById('twilioAccountSid').value;
@@ -844,51 +1114,31 @@
             console.log('Números guardados:', phoneNumbers);
         }
 
-// Función para cargar números guardados
-function loadPhoneNumbers() {
-    const savedNumbers = localStorage.getItem('whatsappNumbers');
-    if (savedNumbers) {
-        const phoneNumbers = JSON.parse(savedNumbers);
-        const phoneList = document.getElementById('phoneNumbersList');
-        
-        // Limpiar lista actual
-        phoneList.innerHTML = '';
-        
-        // Agregar números guardados
-        Object.entries(phoneNumbers).forEach(([name, number]) => {
-            addPhoneNumber();
-            const lastEntry = phoneList.lastElementChild;
-            lastEntry.querySelector('.phone-name').value = name;
-            lastEntry.querySelector('.phone-number').value = number;
-        });
-    }
-    
-    // Si no hay números, agregar uno por defecto
-    if (document.getElementById('phoneNumbersList').children.length === 0) {
-        addPhoneNumber();
-    }
-}
+        // Función para cargar números guardados
+        function loadPhoneNumbers() {
+            const savedNumbers = localStorage.getItem('whatsappNumbers');
+            if (savedNumbers) {
+                const phoneNumbers = JSON.parse(savedNumbers);
+                const phoneList = document.getElementById('phoneNumbersList');
+                
+                // Limpiar lista actual
+                phoneList.innerHTML = '';
+                
+                // Agregar números guardados
+                Object.entries(phoneNumbers).forEach(([name, number]) => {
+                    addPhoneNumber();
+                    const lastEntry = phoneList.lastElementChild;
+                    lastEntry.querySelector('.phone-name').value = name;
+                    lastEntry.querySelector('.phone-number').value = number;
+                });
+            }
+            
+            // Si no hay números, agregar uno por defecto
+            if (document.getElementById('phoneNumbersList').children.length === 0) {
+                addPhoneNumber();
+            }
+        }
 
-// Función para mostrar configuración (nueva)
-function showSettings() {
-    showSection('settings');
-    loadPhoneNumbers();
-    
-    // Cargar valores guardados
-    setTimeout(() => {
-        const accountSid = localStorage.getItem('twilioAccountSid') || '';
-        const authToken = localStorage.getItem('twilioAuthToken') || '';
-        const serviceSid = localStorage.getItem('twilioServiceSid') || '';
-        
-        const accountSidInput = document.getElementById('twilioAccountSid');
-        const authTokenInput = document.getElementById('twilioAuthToken');
-        const serviceSidInput = document.getElementById('twilioServiceSid');
-        
-        if (accountSidInput) accountSidInput.value = accountSid;
-        if (authTokenInput) authTokenInput.value = authToken;
-        if (serviceSidInput) serviceSidInput.value = serviceSid;
-    }, 100);
-}
         // Movement modal functions
         function openMovementModal(type) {
             const modal = document.getElementById('movementModal');
@@ -906,24 +1156,24 @@ function showSettings() {
             // Show relevant fields based on movement type
             switch(type) {
                 case 'reception':
-                    modalTitle.textContent = 'Recepción BINS Vacíos';
+                    modalTitle.textContent = currentLanguage === 'es' ? 'Recepción BINS Vacíos' : 'Empty BINS Reception';
                     document.getElementById('companyField').classList.remove('hidden');
                     document.getElementById('driverField').classList.remove('hidden');
                     break;
                 case 'delivery':
-                    modalTitle.textContent = 'Entrega a Growers';
+                    modalTitle.textContent = currentLanguage === 'es' ? 'Entrega a Growers' : 'Delivery to Growers';
                     document.getElementById('growerField').classList.remove('hidden');
                     document.getElementById('orchardField').classList.remove('hidden');
                     break;
                 case 'return':
-                    modalTitle.textContent = 'Retorno BINS Llenos';
+                    modalTitle.textContent = currentLanguage === 'es' ? 'Retorno BINS Llenos' : 'Full BINS Return';
                     document.getElementById('growerField').classList.remove('hidden');
                     document.getElementById('varietyField').classList.remove('hidden');
                     document.getElementById('orchardField').classList.remove('hidden');
                     document.getElementById('harvestDateField').classList.remove('hidden');
                     break;
                 case 'dispatch':
-                    modalTitle.textContent = 'Despacho a Kelowna';
+                    modalTitle.textContent = currentLanguage === 'es' ? 'Despacho a Kelowna' : 'Dispatch to Kelowna';
                     document.getElementById('companyField').classList.remove('hidden');
                     document.getElementById('driverField').classList.remove('hidden');
                     break;
@@ -966,7 +1216,6 @@ function showSettings() {
         function handleMovementSubmit(e) {
             e.preventDefault();
             
-            const formData = new FormData(e.target);
             const type = e.target.dataset.type;
             const bins = parseInt(document.getElementById('modalBins').value);
             const totes = bins * 24;
@@ -1007,7 +1256,7 @@ function showSettings() {
             closeMovementModal();
             
             // Show success message
-            alert('Movimiento registrado exitosamente');
+            showNotification('Movimiento registrado exitosamente', 'success');
         }
 
         function updateStockData(movement) {
@@ -1064,7 +1313,10 @@ function showSettings() {
                 document.getElementById(prefix + 'Dispatched').textContent = `${data.dispatched} BINS`;
                 
                 if (hidrocooler !== 'REF') {
-                    document.getElementById(prefix + 'WithGrowers').textContent = `${data.withGrowers} BINS`;
+                    const withGrowersElement = document.getElementById(prefix + 'WithGrowers');
+                    if (withGrowersElement) {
+                        withGrowersElement.textContent = `${data.withGrowers} BINS`;
+                    }
                 }
             });
             
@@ -1084,10 +1336,10 @@ function showSettings() {
                 row.className = 'border-b hover:bg-gray-50';
                 
                 const typeNames = {
-                    'reception': 'Recepción Vacíos',
-                    'delivery': 'Entrega a Growers',
-                    'return': 'Retorno Llenos',
-                    'dispatch': 'Despacho Kelowna'
+                    'reception': currentLanguage === 'es' ? 'Recepción Vacíos' : 'Empty Reception',
+                    'delivery': currentLanguage === 'es' ? 'Entrega a Growers' : 'Delivery to Growers',
+                    'return': currentLanguage === 'es' ? 'Retorno Llenos' : 'Full Return',
+                    'dispatch': currentLanguage === 'es' ? 'Despacho Kelowna' : 'Dispatch Kelowna'
                 };
                 
                 row.innerHTML = `
@@ -1104,8 +1356,6 @@ function showSettings() {
         }
 
         // Chart functions
-        let stockChart, movementChart;
-
         function initializeCharts() {
             // Stock Chart
             const stockCtx = document.getElementById('stockChart').getContext('2d');
@@ -1115,13 +1365,13 @@ function showSettings() {
                     labels: ['SHUKINS', 'SMAGH', 'REF'],
                     datasets: [{
                         label: 'Stock Disponible',
-                        data: [0, 0, 0],
+                        data: [280, 150, 320],
                         backgroundColor: 'rgba(54, 162, 235, 0.8)',
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
                     }, {
                         label: 'Fruta en Hidrocooler',
-                        data: [0, 0, 0],
+                        data: [45, 32, 0],
                         backgroundColor: 'rgba(255, 99, 132, 0.8)',
                         borderColor: 'rgba(255, 99, 132, 1)',
                         borderWidth: 1
@@ -1145,7 +1395,7 @@ function showSettings() {
                 data: {
                     labels: ['Recepción', 'Entrega', 'Retorno', 'Despacho'],
                     datasets: [{
-                        data: [0, 0, 0, 0],
+                        data: [25, 20, 15, 30],
                         backgroundColor: [
                             'rgba(54, 162, 235, 0.8)',
                             'rgba(255, 206, 86, 0.8)',
@@ -1162,6 +1412,8 @@ function showSettings() {
         }
 
         function updateCharts() {
+            if (!stockChart || !movementChart) return;
+
             // Update stock chart
             const stockValues = ['SHUKINS', 'SMAGH', 'REF'].map(h => stockData[h].available);
             const fruitValues = ['SHUKINS', 'SMAGH', 'REF'].map(h => stockData[h].fruitInHidrocooler);
@@ -1179,7 +1431,9 @@ function showSettings() {
             };
             
             movementData.forEach(movement => {
-                movementCounts[movement.type]++;
+                if (movementCounts[movement.type] !== undefined) {
+                    movementCounts[movement.type]++;
+                }
             });
             
             movementChart.data.datasets[0].data = [
@@ -1191,179 +1445,54 @@ function showSettings() {
             movementChart.update();
         }
 
-        // Report functions
-        function generateReport(type) {
-            const reportOutput = document.getElementById('reportOutput');
-            const today = new Date().toLocaleDateString();
-            
-            let report = '';
-            
-            switch(type) {
-                case 'daily':
-                    report = generateDailyReport(today);
-                    break;
-                case 'executive':
-                    report = generateExecutiveReport(today);
-                    break;
-                case 'whatsapp':
-                    report = generateWhatsAppReport(today);
-                    sendWhatsAppReport(report);
-                    break;
-            }
-            
-            reportOutput.textContent = report;
-        }
-
-        function generateDailyReport(date) {
-            const totalAvailable = Object.values(stockData).reduce((sum, data) => sum + data.available, 0);
-            const totalFruit = Object.values(stockData).reduce((sum, data) => sum + data.fruitInHidrocooler, 0);
-            const totalDispatched = Object.values(stockData).reduce((sum, data) => sum + data.dispatched, 0);
-            
-            return `🍒 Mr BINS - DAILY REPORT - ${date}
-
-📊 CONSOLIDATED SUMMARY:
-   🪣 Total Available Stock: ${totalAvailable}/1,200 BINS (${(totalAvailable/1200*100).toFixed(1)}%)
-   🍒 Total Fruit in Hidrocoolers: ${totalFruit} BINS
-   📦 Total Dispatched: ${totalDispatched} BINS
-
-📈 PERFORMANCE BY HIDROCOOLER:
-   
-   SHUKINS:
-   • Available: ${stockData.SHUKINS.available}/400 BINS (${(stockData.SHUKINS.available/400*100).toFixed(1)}%)
-   • Fruit Ready: ${stockData.SHUKINS.fruitInHidrocooler} BINS
-   • With Growers: ${stockData.SHUKINS.withGrowers} BINS
-   • Dispatched: ${stockData.SHUKINS.dispatched} BINS
-   
-   SMAGH:
-   • Available: ${stockData.SMAGH.available}/400 BINS (${(stockData.SMAGH.available/400*100).toFixed(1)}%)
-   • Fruit Ready: ${stockData.SMAGH.fruitInHidrocooler} BINS
-   • With Growers: ${stockData.SMAGH.withGrowers} BINS
-   • Dispatched: ${stockData.SMAGH.dispatched} BINS
-   
-   REF:
-   • Available: ${stockData.REF.available}/400 BINS (${(stockData.REF.available/400*100).toFixed(1)}%)
-   • Fruit Ready: ${stockData.REF.fruitInHidrocooler} BINS
-   • Dispatched: ${stockData.REF.dispatched} BINS
-
-🚨 ALERTS:
-${generateAlerts()}
-
-📊 View details: [Google Sheet Link]`;
-        }
-
-        function generateExecutiveReport(date) {
-            return `📊 EXECUTIVE REPORT - ${date}
-
-🎯 OPERATIONAL HIGHLIGHTS:
-   • Total Movements Today: ${movementData.filter(m => new Date(m.timestamp).toDateString() === new Date().toDateString()).length}
-   • System Efficiency: ${calculateEfficiency()}%
-   • Stock Utilization: ${calculateStockUtilization()}%
-
-📈 PERFORMANCE METRICS:
-   • SHUKINS Efficiency: ${calculateHidrocoolerEfficiency('SHUKINS')}%
-   • SMAGH Efficiency: ${calculateHidrocoolerEfficiency('SMAGH')}%
-   • REF Efficiency: ${calculateHidrocoolerEfficiency('REF')}%
-
-💡 RECOMMENDATIONS:
-${generateRecommendations()}`;
-        }
-
-        function generateWhatsAppReport(date) {
-            return generateDailyReport(date);
-        }
-
-        function generateAlerts() {
-            const alerts = [];
-            
-            Object.keys(stockData).forEach(hidrocooler => {
-                const data = stockData[hidrocooler];
-                const percentage = (data.available / 400) * 100;
-                
-                if (percentage < 20) {
-                    alerts.push(`   • ${hidrocooler}: Low stock (${percentage.toFixed(1)}%)`);
-                }
-                
-                if (data.fruitInHidrocooler > 200) {
-                    alerts.push(`   • ${hidrocooler}: High fruit inventory (${data.fruitInHidrocooler} BINS)`);
-                }
-            });
-            
-            return alerts.length > 0 ? alerts.join('\n') : '   • No alerts';
-        }
-
-        function generateRecommendations() {
-            const recommendations = [];
-            
-            Object.keys(stockData).forEach(hidrocooler => {
-                const data = stockData[hidrocooler];
-                const percentage = (data.available / 400) * 100;
-                
-                if (percentage < 20) {
-                    recommendations.push(`   • Increase ${hidrocooler} capacity`);
-                }
-            });
-            
-            return recommendations.length > 0 ? recommendations.join('\n') : '   • System operating optimally';
-        }
-
-        function calculateEfficiency() {
-            const totalMovements = movementData.length;
-            const completedMovements = movementData.filter(m => m.type === 'dispatch').length;
-            return totalMovements > 0 ? Math.round((completedMovements / totalMovements) * 100) : 0;
-        }
-
-        function calculateStockUtilization() {
-            const totalCapacity = 1200;
-            const totalUsed = Object.values(stockData).reduce((sum, data) => sum + data.available + data.fruitInHidrocooler, 0);
-            return Math.round((totalUsed / totalCapacity) * 100);
-        }
-
-        function calculateHidrocoolerEfficiency(hidrocooler) {
-            const hidrocoolerMovements = movementData.filter(m => m.hidrocooler === hidrocooler);
-            const completed = hidrocoolerMovements.filter(m => m.type === 'dispatch').length;
-            return hidrocoolerMovements.length > 0 ? Math.round((completed / hidrocoolerMovements.length) * 100) : 0;
-        }
-
         // Settings functions
         function loadSettings() {
-            document.getElementById('googleScriptUrl').value = localStorage.getItem('googleAppsScriptUrl') || '';
-            document.getElementById('twilioAccountSid').value = localStorage.getItem('twilioAccountSid') || '';
-            document.getElementById('twilioAuthToken').value = localStorage.getItem('twilioAuthToken') || '';
-            document.getElementById('twilioServiceSid').value = localStorage.getItem('twilioServiceSid') || '';
+            const googleUrl = localStorage.getItem('googleAppsScriptUrl') || '';
+            const googleUrlInput = document.getElementById('googleScriptUrl');
+            if (googleUrlInput) {
+                googleUrlInput.value = googleUrl;
+            }
+
+            const accountSid = localStorage.getItem('twilioAccountSid') || '';
+            const authToken = localStorage.getItem('twilioAuthToken') || '';
+            const serviceSid = localStorage.getItem('twilioServiceSid') || '';
+            
+            const accountSidInput = document.getElementById('twilioAccountSid');
+            const authTokenInput = document.getElementById('twilioAuthToken');
+            const serviceSidInput = document.getElementById('twilioServiceSid');
+            
+            if (accountSidInput) accountSidInput.value = accountSid;
+            if (authTokenInput) authTokenInput.value = authToken;
+            if (serviceSidInput) serviceSidInput.value = serviceSid;
         }
 
         function saveGoogleScriptConfig() {
             const url = document.getElementById('googleScriptUrl').value;
             localStorage.setItem('googleAppsScriptUrl', url);
-            alert('Configuración de Google Apps Script guardada');
-        }
-
-        function saveWhatsAppConfig() {
-            localStorage.setItem('twilioAccountSid', document.getElementById('twilioAccountSid').value);
-            localStorage.setItem('twilioAuthToken', document.getElementById('twilioAuthToken').value);
-            localStorage.setItem('twilioServiceSid', document.getElementById('twilioServiceSid').value);
-            alert('Configuración de WhatsApp guardada');
+            showNotification('Configuración de Google Apps Script guardada', 'success');
         }
 
         function testGoogleSheetsConnection() {
             const url = localStorage.getItem('googleAppsScriptUrl');
             if (!url) {
-                alert('Por favor configura la URL de Google Apps Script primero');
+                showNotification('Por favor configura la URL de Google Apps Script primero', 'error');
                 return;
             }
             
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    alert('Conexión exitosa con Google Sheets: ' + data.message);
+                    showNotification('✅ Conexión con Google Sheets exitosa', 'success');
+                    console.log('Google Sheets response:', data);
                 })
                 .catch(error => {
-                    alert('Error de conexión: ' + error.message);
+                    showNotification('❌ Error conectando con Google Sheets', 'error');
+                    console.error('Error:', error);
                 });
         }
 
         function testWhatsAppConnection() {
-            alert('Función de prueba de WhatsApp - Integración pendiente');
+            showNotification('Reporte WhatsApp generado (integración pendiente)', 'info');
         }
 
         // Google Sheets integration
@@ -1390,9 +1519,9 @@ ${generateRecommendations()}`;
                     totes: movement.totes,
                     company: movement.company,
                     driver: movement.driver,
-                    producer: movement.grower,
+                    grower: movement.grower,
                     variety: movement.variety,
-                    field: movement.orchard,
+                    orchard: movement.orchard,
                     comments: movement.comments,
                     user: movement.user
                 }
@@ -1418,18 +1547,22 @@ ${generateRecommendations()}`;
             });
         }
 
-        function sendWhatsAppReport(report) {
-            const accountSid = localStorage.getItem('twilioAccountSid');
-            const authToken = localStorage.getItem('twilioAuthToken');
-            const serviceSid = localStorage.getItem('twilioServiceSid');
+        // Notification function
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 p-4 rounded-md shadow-lg z-50 ${
+                type === 'success' ? 'bg-green-500 text-white' :
+                type === 'error' ? 'bg-red-500 text-white' :
+                type === 'warning' ? 'bg-yellow-500 text-white' :
+                'bg-blue-500 text-white'
+            }`;
+            notification.textContent = message;
             
-            if (!accountSid || !authToken || !serviceSid) {
-                alert('Por favor configura las credenciales de Twilio primero');
-                return;
-            }
+            document.body.appendChild(notification);
             
-            // WhatsApp integration would go here
-            alert('Reporte WhatsApp generado (integración pendiente)');
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
         }
 
         // Data persistence
@@ -1451,14 +1584,5 @@ ${generateRecommendations()}`;
             }
         }
     </script>
-
-
-    <script id="html_badge_script1">
-        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
-            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDtzZlLvPT3b2xNImz%2FQKKwLFJmFH3JfhCm9jd4Gyo5ltjLcQxC%2BbhyU%2Bbo1v5QPYnk0vMMk6fuh6x%2BLcAhu8sxYFU0teuDxuoNi2zbrkOtwJZH7e4s2zgN8BBvDLt6XkQR2PL%2BYf8j9x6Y%2FXJvLDzuyLlNDKKS5yAGA83OzpraHYE4AtO5Q4C5LIJ10EPVJpa9BmvA3uj4np3ck7Jrlv1n2CdogghKn1%2Blrqma%2FjLE65A%2BRsTU1CTESS1feKi4i%2FtVOCcbgfYCkm7U7C9GSRM1c8JxHr9OJ8l54MjRgaHD%2BA2Lff%2B2XE27%2BiEucqO3Nwu0ky2rfvGLgsIfkAl%2FOucPZCPP2BzrYTBI0K6WjvBbg8XQyXa5njNqBwS9OmTuEQ4m2mMHG7bqyugyJeY6az8v0XBKRGprUZ8zK1nnPmb3LVKvz3%2Bn1WUttwjSbqkeW53GSd7v2Zl1TI7hx4yb6t2lR8nL9uZlm0uh9zYFbtSPPUGDLlD0%2F5Jq9joESdkopR1WsbR257SMrmJGL8xL%2Fjils%3D";
-        window.__genspark_locale = "es-ES";
-        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDtzZlLvPT3b2xNImz/QKKwLFJmFH3JfhCm9jd4Gyo5ltjLcQxC+bhyU+bo1v5QPYnk0vMMk6fuh6x+LcAhu8sxYFU0teuDxuoNi2zbrkOtwJZH7e4s2zgN8BBvDLt6XkQR2PL+Yf8j9x6Y/XJvLDzuyLlNDKKS5yAGA83OzpraHYE4AtO5Q4C5LIJ10EPVJpa9BmvA3uj4np3ck7Jrlv1n2CdogghKn1+lrqma/jLE65A+RsTU1CTESS1feKi4i/tVOCcbgfYCkm7U7C9GSRM1c8JxHr9OJ8l54MjRgaHD+A2Lff+2XE27+iEucqO3Nwu0ky2rfvGLgsIfkAl/OucPZCPP2BzrYTBI0K6WjvBbg8XQyXa5njNqBwS9OmTuEQ4m2mMHG7bqyugyJeY6az8v0XBKRGprUZ8zK1nnPmb3LVKvz3+n1WUttwjSbqkeW53GSd7v2Zl1TI7hx4yb6t2lR8nL9uZlm0uh9zYFbtSPPUGDLlD0/5Jq9joESdkopR1WsbR257SMrmJGL8xL/jils=";
-    </script>
-    
-    <script id="html_notice_dialog_script" src="./Mr BINS - Sistema ERP_files/notice_dialog.js"></script>
-    <div style="position: relative;" id="zp-10-0-5-licdn-root-apollo_everywhere" data-has-tooltip-listener=""><div class="x_BJJxg" data-disable-focus-trap="true"></div><div class="x_KfhZL" aria-live="polite" aria-atomic="true" data-disable-focus-trap="true"></div><span data-name="tooltip-listener" aria-hidden="true" style="display: none;"></span> </div></body></html>
+</body>
+</html>
