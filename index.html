@@ -484,6 +484,61 @@
                         </div>
                     </div>
                 </div>
+                <!-- Panel de Administrador - Solo para Master Admin -->
+<div id="adminPanel" class="bg-red-50 border border-red-200 p-6 rounded-lg shadow-lg mt-6" style="display: none;">
+    <h3 class="text-xl font-bold text-red-800 mb-4">🔧 Panel de Administrador</h3>
+    <p class="text-red-600 mb-4"><strong>⚠️ Cuidado:</strong> Estas acciones modificarán los datos del sistema</p>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Reset Stock -->
+        <div class="bg-white p-4 rounded-lg border">
+            <h4 class="font-bold text-gray-800 mb-3">📊 Resetear Stock de BINS</h4>
+            
+            <div class="space-y-3">
+                <div class="grid grid-cols-3 gap-2 text-sm">
+                    <label class="font-medium">SHUKINS:</label>
+                    <input type="number" id="resetShukins" placeholder="0" class="px-2 py-1 border rounded w-full">
+                    <span class="text-gray-500 text-xs flex items-center">BINS disponibles</span>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-2 text-sm">
+                    <label class="font-medium">SMAGH:</label>
+                    <input type="number" id="resetSmagh" placeholder="0" class="px-2 py-1 border rounded w-full">
+                    <span class="text-gray-500 text-xs flex items-center">BINS disponibles</span>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-2 text-sm">
+                    <label class="font-medium">REF:</label>
+                    <input type="number" id="resetRef" placeholder="0" class="px-2 py-1 border rounded w-full">
+                    <span class="text-gray-500 text-xs flex items-center">BINS disponibles</span>
+                </div>
+            </div>
+            
+            <button onclick="resetStockData()" class="mt-4 w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+                🔄 Resetear Stock
+            </button>
+        </div>
+        
+        <!-- Reset Completo -->
+        <div class="bg-white p-4 rounded-lg border">
+            <h4 class="font-bold text-gray-800 mb-3">🗑️ Reset Completo del Sistema</h4>
+            
+            <div class="space-y-3">
+                <button onclick="clearAllMovements()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">
+                    📋 Limpiar Movimientos
+                </button>
+                
+                <button onclick="resetToFactoryDefaults()" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    ⚠️ Reset Total (Fábrica)
+                </button>
+            </div>
+            
+            <p class="text-xs text-gray-500 mt-2">
+                <strong>Reset Total:</strong> Borra todos los datos y vuelve a estado inicial
+            </p>
+        </div>
+    </div>
+</div>
 
                 <!-- Test Connection -->
                 <div class="bg-white p-6 rounded-lg shadow-lg mt-6">
@@ -1122,6 +1177,129 @@
             
             console.log('Números guardados:', phoneNumbers);
         }
+        // Mostrar panel de admin solo para Master Admin
+function showSettings() {
+    showSection('settings');
+    loadPhoneNumbers();
+    
+    // Mostrar panel de admin solo para master
+    const adminPanel = document.getElementById('adminPanel');
+    if (currentUser && currentUser.role === 'super_admin') {
+        adminPanel.style.display = 'block';
+    } else {
+        adminPanel.style.display = 'none';
+    }
+    
+    // Cargar valores guardados de configuración
+    setTimeout(() => {
+        const accountSid = localStorage.getItem('twilioAccountSid') || '';
+        const authToken = localStorage.getItem('twilioAuthToken') || '';
+        const serviceSid = localStorage.getItem('twilioServiceSid') || '';
+        
+        const accountSidInput = document.getElementById('twilioAccountSid');
+        const authTokenInput = document.getElementById('twilioAuthToken');
+        const serviceSidInput = document.getElementById('twilioServiceSid');
+        
+        if (accountSidInput) accountSidInput.value = accountSid;
+        if (authTokenInput) authTokenInput.value = authToken;
+        if (serviceSidInput) serviceSidInput.value = serviceSid;
+    }, 100);
+}
+
+// Función para resetear stock a números reales
+function resetStockData() {
+    const shukins = parseInt(document.getElementById('resetShukins').value) || 0;
+    const smagh = parseInt(document.getElementById('resetSmagh').value) || 0;
+    const ref = parseInt(document.getElementById('resetRef').value) || 0;
+    
+    const confirmMessage = `¿Estás seguro de resetear el stock a:\n\nSHUKINS: ${shukins} BINS\nSMAGH: ${smagh} BINS\nREF: ${ref} BINS\n\nEsta acción no se puede deshacer.`;
+    
+    if (confirm(confirmMessage)) {
+        // Resetear datos de stock
+        stockData = {
+            'SHUKINS': { 
+                available: shukins, 
+                fruitInHidrocooler: 0, 
+                withGrowers: 0, 
+                dispatched: 0 
+            },
+            'SMAGH': { 
+                available: smagh, 
+                fruitInHidrocooler: 0, 
+                withGrowers: 0, 
+                dispatched: 0 
+            },
+            'REF': { 
+                available: ref, 
+                fruitInHidrocooler: 0, 
+                withGrowers: 0, 
+                dispatched: 0 
+            }
+        };
+        
+        // Guardar en localStorage
+        saveDataToStorage();
+        
+        // Actualizar dashboard
+        updateDashboard();
+        
+        // Limpiar campos
+        document.getElementById('resetShukins').value = '';
+        document.getElementById('resetSmagh').value = '';
+        document.getElementById('resetRef').value = '';
+        
+        alert('✅ Stock reseteado correctamente');
+        
+        // Volver al dashboard
+        showSection('dashboard');
+    }
+}
+
+// Función para limpiar todos los movimientos
+function clearAllMovements() {
+    if (confirm('⚠️ ¿Estás seguro de eliminar TODOS los movimientos?\n\nEsta acción no se puede deshacer.')) {
+        movementData = [];
+        saveDataToStorage();
+        updateRecentMovements();
+        alert('✅ Todos los movimientos han sido eliminados');
+    }
+}
+
+// Función para reset completo a valores de fábrica
+function resetToFactoryDefaults() {
+    const confirmText = '🚨 RESET TOTAL DEL SISTEMA 🚨\n\nEsto eliminará:\n• Todos los movimientos\n• Todo el stock actual\n• Todas las configuraciones\n\n¿Estás COMPLETAMENTE seguro?';
+    
+    if (confirm(confirmText)) {
+        // Reset completo
+        movementData = [];
+        stockData = {
+            'SHUKINS': { available: 0, fruitInHidrocooler: 0, withGrowers: 0, dispatched: 0 },
+            'SMAGH': { available: 0, fruitInHidrocooler: 0, withGrowers: 0, dispatched: 0 },
+            'REF': { available: 0, fruitInHidrocooler: 0, withGrowers: 0, dispatched: 0 }
+        };
+        
+        // Limpiar configuraciones (opcional)
+        localStorage.removeItem('movementData');
+        localStorage.removeItem('stockData');
+        localStorage.removeItem('googleAppsScriptUrl');
+        localStorage.removeItem('twilioAccountSid');
+        localStorage.removeItem('twilioAuthToken');
+        localStorage.removeItem('twilioServiceSid');
+        localStorage.removeItem('whatsappNumbers');
+        
+        // Guardar estado inicial
+        saveDataToStorage();
+        
+        // Actualizar interfaz
+        updateDashboard();
+        
+        alert('✅ Sistema reseteado completamente a valores de fábrica');
+        
+        // Volver al dashboard
+        showSection('dashboard');
+    }
+}
+
 
         // Función para cargar números guardados
         function loadPhoneNumbers() {
