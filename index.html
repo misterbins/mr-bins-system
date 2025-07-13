@@ -1633,27 +1633,7 @@ function resetToFactoryDefaults() {
         }
 
         // Settings functions
-        function loadSettings() {
-            const googleUrl = localStorage.getItem('googleAppsScriptUrl') || '';
-            const googleUrlInput = document.getElementById('googleScriptUrl');
-            if (googleUrlInput) {
-                googleUrlInput.value = googleUrl;
-            }
-
-            const accountSid = localStorage.getItem('twilioAccountSid') || '';
-            const authToken = localStorage.getItem('twilioAuthToken') || '';
-            const serviceSid = localStorage.getItem('twilioServiceSid') || '';
-            
-            const accountSidInput = document.getElementById('twilioAccountSid');
-            const authTokenInput = document.getElementById('twilioAuthToken');
-            const serviceSidInput = document.getElementById('twilioServiceSid');
-            
-            if (accountSidInput) accountSidInput.value = accountSid;
-            if (authTokenInput) authTokenInput.value = authToken;
-            if (serviceSidInput) serviceSidInput.value = serviceSid;
-        }
-
-        function saveGoogleScriptConfig() {
+            function saveGoogleScriptConfig() {
             const url = document.getElementById('googleScriptUrl').value;
             localStorage.setItem('googleAppsScriptUrl', url);
             showNotification('Configuración de Google Apps Script guardada', 'success');
