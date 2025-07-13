@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr BINS - Sistema ERP con Bill of Lading</title>
+    <title>Mr BINS - Sistema ERP</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://cdn1.genspark.ai/user-upload-image/22_generated/e788f055-2e71-4833-af8f-ca8c47593acc">
-<link rel="icon" type="image/png" sizes="16x16" href="https://cdn1.genspark.ai/user-upload-image/22_generated/e788f055-2e71-4833-af8f-ca8c47593acc">
-<link rel="apple-touch-icon" sizes="180x180" href="https://cdn1.genspark.ai/user-upload-image/22_generated/e788f055-2e71-4833-af8f-ca8c47593acc">
-
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn1.genspark.ai/user-upload-image/22_generated/e788f055-2e71-4833-af8f-ca8c47593acc">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn1.genspark.ai/user-upload-image/22_generated/e788f055-2e71-4833-af8f-ca8c47593acc">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -96,132 +95,122 @@
             background: linear-gradient(135deg, #c0392b, #a93226);
             transform: translateY(-2px);
         }
-        .btn-bol {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        .bol-download-btn {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .bol-download-btn:hover {
+            background: linear-gradient(135deg, #218838, #1ea085);
+            transform: translateY(-1px);
+        }
+        .bol-generate-btn {
+            background: linear-gradient(135deg, #ffc107, #ff8f00);
             color: white;
             border: none;
             padding: 0.5rem 1rem;
-            border-radius: 8px;
+            border-radius: 4px;
             font-weight: 600;
-            margin-left: 10px;
-            box-shadow: 0 4px 8px rgba(106, 17, 203, 0.3);
+            margin-left: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        .btn-bol:hover {
-            background: linear-gradient(135deg, #2575fc, #6a11cb);
-            transform: translateY(-2px);
+        .bol-generate-btn:hover {
+            background: linear-gradient(135deg, #ff8f00, #ff6f00);
+            transform: translateY(-1px);
         }
-        
-        /* Bill of Lading Styles */
-        .bol-document {
-            background: white;
-            max-width: 210mm;
+
+        /* BOL Template Styles */
+        .bol-template {
+            width: 210mm;
+            height: 297mm;
             margin: 0 auto;
             padding: 20mm;
+            background: white;
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
-            font-size: 11pt;
-            line-height: 1.4;
             color: #000;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            line-height: 1.4;
         }
         .bol-header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         .bol-logo {
             width: 200px;
             height: auto;
-            margin: 0 auto 15px;
-        }
-        .bol-title {
-            font-size: 24pt;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        .bol-contact {
-            font-size: 10pt;
-            border-top: 2px solid #000;
-            border-bottom: 2px solid #000;
-            padding: 8px 0;
             margin-bottom: 20px;
         }
+        .bol-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        .bol-contact {
+            font-size: 12px;
+            border-top: 2px solid #000;
+            border-bottom: 2px solid #000;
+            padding: 10px 0;
+            margin-bottom: 30px;
+        }
         .bol-info-section {
-            background: #f5f5f5;
-            padding: 15px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
+            margin-bottom: 20px;
         }
         .bol-info-row {
             display: flex;
-            margin-bottom: 10px;
-            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
         }
         .bol-info-label {
             font-weight: bold;
-            min-width: 120px;
-            margin-right: 10px;
+            width: 120px;
         }
         .bol-info-value {
             flex: 1;
-            padding: 5px;
-            border-bottom: 1px solid #333;
-            min-height: 20px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 2px;
         }
         .bol-legal-text {
-            font-size: 10pt;
+            font-size: 11px;
             line-height: 1.3;
-            margin: 20px 0;
+            margin: 30px 0;
             text-align: justify;
         }
-        .bol-penalty-list {
-            margin: 10px 0;
-            padding-left: 20px;
+        .bol-charges {
+            font-size: 11px;
+            margin-left: 20px;
+            line-height: 1.4;
         }
-        .bol-shipping-section {
+        .bol-shipping-info {
+            font-size: 16px;
+            font-weight: bold;
             margin: 30px 0;
         }
-        .bol-shipping-item {
-            font-size: 14pt;
-            font-weight: bold;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        .bol-shipping-label {
-            min-width: 200px;
-        }
-        .bol-shipping-value {
-            border-bottom: 2px solid #000;
-            min-width: 100px;
-            padding: 5px;
-        }
         .bol-signature-section {
-            margin-top: 50px;
+            margin-top: 60px;
             display: flex;
             justify-content: space-between;
         }
         .bol-signature-box {
             width: 45%;
-        }
-        .bol-signature-label {
-            font-weight: bold;
-            font-size: 12pt;
-            margin-bottom: 10px;
-        }
-        .bol-signature-line {
             border-bottom: 2px solid #000;
-            height: 40px;
-            margin-bottom: 5px;
+            padding-bottom: 40px;
+            font-weight: bold;
         }
-        
         @media print {
-            .bol-document {
-                max-width: none;
+            .bol-template {
+                width: 210mm;
+                height: 297mm;
                 margin: 0;
                 padding: 15mm;
-                box-shadow: none;
-            }
-            .no-print {
-                display: none !important;
             }
         }
     </style>
@@ -505,6 +494,7 @@
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                    <!-- Botón 1: Reporte Diario - Azul -->
                     <button onclick="generateDailyReport()" class="bg-gradient-to-br from-blue-500 to-blue-700 text-white p-6 rounded-xl hover:shadow-xl transition-all transform hover:scale-105 border-0 hover:from-blue-600 hover:to-blue-800">
                         <div class="flex flex-col items-center text-center">
                             <i class="fas fa-calendar-day text-3xl mb-3 opacity-90"></i>
@@ -513,6 +503,7 @@
                         </div>
                     </button>
                     
+                    <!-- Botón 2: Reporte Ejecutivo - Verde -->
                     <button onclick="generateExecutiveReport()" class="bg-gradient-to-br from-green-500 to-green-700 text-white p-6 rounded-xl hover:shadow-xl transition-all transform hover:scale-105 border-0 hover:from-green-600 hover:to-green-800">
                         <div class="flex flex-col items-center text-center">
                             <i class="fas fa-chart-line text-3xl mb-3 opacity-90"></i>
@@ -521,6 +512,7 @@
                         </div>
                     </button>
                     
+                    <!-- Botón 3: Reporte Semanal - Cereza -->
                     <button onclick="generateWeeklyReport()" class="bg-gradient-to-br from-red-400 to-pink-500 text-white p-6 rounded-xl hover:shadow-xl transition-all transform hover:scale-105 border-0 hover:from-red-500 hover:to-pink-600">
                         <div class="flex flex-col items-center text-center">
                             <i class="fas fa-calendar-week text-3xl mb-3 opacity-90"></i>
@@ -530,6 +522,7 @@
                     </button>
                 </div>
                 
+                <!-- Área de Reporte Generado -->
                 <div id="reportArea" class="hidden">
                     <div class="bg-white rounded-lg shadow-lg p-6">
                         <div class="flex justify-between items-center mb-4">
@@ -564,6 +557,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Google Apps Script Configuration -->
                     <div class="bg-white p-6 rounded-lg shadow-lg">
                         <h3 class="text-xl font-bold text-gray-800 mb-4">Google Apps Script</h3>
                         <div class="space-y-4">
@@ -577,6 +571,7 @@
                         </div>
                     </div>
 
+                    <!-- WhatsApp Configuration -->
                     <div class="bg-white rounded-lg shadow-md p-6">
                         <h3 class="text-xl font-semibold mb-4">WhatsApp (Twilio)</h3>
                         
@@ -596,9 +591,12 @@
                                 <input type="text" id="twilioServiceSid" placeholder="MGxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" class="w-full p-2 border border-gray-300 rounded-md">
                             </div>
                             
+                            <!-- Sección de Números -->
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2" data-es="Números de WhatsApp" data-en="WhatsApp Numbers">Números de WhatsApp</label>
-                                <div id="phoneNumbersList" class="space-y-2"></div>
+                                <div id="phoneNumbersList" class="space-y-2">
+                                    <!-- Los números se cargarán aquí -->
+                                </div>
                                 <button onclick="addPhoneNumber()" class="mt-2 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">
                                     + <span data-es="Agregar Número" data-en="Add Number">Agregar Número</span>
                                 </button>
@@ -611,11 +609,13 @@
                     </div>
                 </div>
                 
+                <!-- Panel de Administrador - Solo para Master Admin -->
                 <div id="adminPanel" class="bg-red-50 border border-red-200 p-6 rounded-lg shadow-lg mt-6" style="display: none;">
                     <h3 class="text-xl font-bold text-red-800 mb-4">🔧 Panel de Administrador</h3>
                     <p class="text-red-600 mb-4"><strong>⚠️ Cuidado:</strong> Estas acciones modificarán los datos del sistema</p>
                     
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Reset Stock -->
                         <div class="bg-white p-4 rounded-lg border">
                             <h4 class="font-bold text-gray-800 mb-3">📊 Resetear Stock de BINS</h4>
                             
@@ -644,6 +644,7 @@
                             </button>
                         </div>
                         
+                        <!-- Reset Completo -->
                         <div class="bg-white p-4 rounded-lg border">
                             <h4 class="font-bold text-gray-800 mb-3">🗑️ Reset Completo del Sistema</h4>
                             
@@ -664,6 +665,7 @@
                     </div>
                 </div>
 
+                <!-- Test Connection -->
                 <div class="bg-white p-6 rounded-lg shadow-lg mt-6">
                     <h3 class="text-xl font-bold text-gray-800 mb-4" data-es="Pruebas de Conexión" data-en="Connection Tests">Pruebas de Conexión</h3>
                     <div class="space-x-4">
@@ -760,102 +762,72 @@
                     <button type="submit" class="btn-primary text-white font-bold py-2 px-4 rounded-md">
                         <i class="fas fa-save mr-2"></i><span data-es="Registrar" data-en="Register">Registrar</span>
                     </button>
-                    <button type="button" id="generateBolBtn" onclick="generateBOL()" class="btn-bol hidden">
-                        <i class="fas fa-file-alt mr-2"></i><span>Generate BOL</span>
+                    <button type="button" id="generateBolBtn" onclick="generateBOL()" class="bol-generate-btn hidden">
+                        <i class="fas fa-file-pdf mr-2"></i>Generate BOL
                     </button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Bill of Lading Modal -->
-    <div id="bolModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
-        <div class="bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-screen overflow-y-auto">
-            <div class="flex justify-between items-center p-6 border-b no-print">
-                <h3 class="text-2xl font-bold text-gray-800">Bill of Lading</h3>
-                <div class="flex space-x-2">
-                    <button onclick="downloadBOL()" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
-                        <i class="fas fa-download mr-2"></i>Download PDF
-                    </button>
-                    <button onclick="printBOL()" class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">
-                        <i class="fas fa-print mr-2"></i>Print
-                    </button>
-                    <button onclick="closeBolModal()" class="text-gray-500 hover:text-gray-700">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
-                </div>
+    <!-- Hidden BOL Template -->
+    <div id="bolTemplate" class="bol-template" style="display: none;">
+        <div class="bol-header">
+            <img src="https://cdn1.genspark.ai/user-upload-image/22_generated/e788f055-2e71-4833-af8f-ca8c47593acc" alt="Northern Cherries Logo" class="bol-logo">
+            <h1 class="bol-title">Bill Of Lading</h1>
+            <div class="bol-contact">
+                1254 Glenmore Rd N. Kelowna, BC, Canada &nbsp;&nbsp;&nbsp; Phone: 250-485-8571 &nbsp;&nbsp;&nbsp; Fax: 778-484-1455 &nbsp;&nbsp;&nbsp; Email: office@northerncherries.ca
             </div>
-            
-            <div id="bolContent" class="bol-document">
-                <div class="bol-header">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMjAwIDgwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNGE5MDU0IiBzdG9wLW9wYWNpdHk9IjEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjZDRjM2YiIHN0b3Atb3BhY2l0eT0iMSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyMDAiIGhlaWdodD0iODAiIHJ4PSIxMCIgZmlsbD0idXJsKCNncmFkaWVudCkiLz48dGV4dCB4PSI0MCIgeT0iMzAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNGRkZGRkYiPk5PUlRIRVJOPC90ZXh0Pjx0ZXh0IHg9IjQwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI0ZGRkZGRiI+Q0hFUlJJRVM8L3RleHQ+PGNpcmNsZSBjeD0iMTMwIiBjeT0iMjUiIHI9IjEwIiBmaWxsPSIjRkYwMDAwIi8+PGNpcmNsZSBjeD0iMTQ1IiBjeT0iMzAiIHI9IjEwIiBmaWxsPSIjRkYwMDAwIi8+PGNpcmNsZSBjeD0iMTYwIiBjeT0iMjciIHI9IjEwIiBmaWxsPSIjRkYwMDAwIi8+PGNpcmNsZSBjeD0iMTQ1IiBjeT0iMTUiIHI9IjciIGZpbGw9IiNGRjAwMDAiLz48Y2lyY2xlIGN4PSIxNTUiIGN5PSIxOCIgcj0iNyIgZmlsbD0iI0ZGMDAwMCIvPjxwYXRoIGQ9Ik0gMTMwIDEwIEwgMTQwIDIwIEwgMTM1IDI1IEwgMTI1IDE1IFoiIGZpbGw9IiM0YTkwNTQiLz48cGF0aCBkPSJNIDEzNSAzNSBMIDEzNSA0NSBMIDEzOCA0NSBMIDEzOCAzNSBaIiBmaWxsPSIjMzY2ZDI3Ii8+PC9zdmc+" alt="Northern Cherries" class="bol-logo">
-                    <h1 class="bol-title">Bill Of Lading</h1>
-                </div>
-                
-                <div class="bol-contact">
-                    1254 Glenmore Rd N. Kelowna, BC, Canada &nbsp;&nbsp; Phone: 250-485-8571 &nbsp;&nbsp; Fax: 778-484-1455 &nbsp;&nbsp; Email: office@northerncherries.ca
-                </div>
-                
-                <div class="bol-info-section">
-                    <div class="bol-info-row">
-                        <span class="bol-info-label">BOL:</span>
-                        <span class="bol-info-value" id="bolNumber">1001</span>
-                    </div>
-                    <div class="bol-info-row">
-                        <span class="bol-info-label">Grower Name:</span>
-                        <span class="bol-info-value" id="bolGrowerName">Sample Grower</span>
-                    </div>
-                    <div class="bol-info-row">
-                        <span class="bol-info-label">Date:</span>
-                        <span class="bol-info-value" id="bolDate">2025-01-13, 09:56 a.m.</span>
-                    </div>
-                    <div class="bol-info-row">
-                        <span class="bol-info-label">Driver Name:</span>
-                        <span class="bol-info-value" id="bolDriverName">Sample Driver</span>
-                    </div>
-                    <div class="bol-info-row">
-                        <span class="bol-info-label">Company:</span>
-                        <span class="bol-info-value" id="bolCompany">Sample Company</span>
-                    </div>
-                    <div class="bol-info-row">
-                        <span class="bol-info-label">Comment:</span>
-                        <span class="bol-info-value" id="bolComment">-</span>
-                    </div>
-                </div>
-                
-                <div class="bol-legal-text">
-                    Northern Cherries Inc. will provide each grower with the number of Bins and Totes listed above for the 2025 Cherry Harvest Season. If the grower does not return the above number of Bins and Totes to Northern Cherries Inc. – 1254 Glenmore Road N., Kelowna, BC - seven days after their last picking date, they will be charged the following:
-                    
-                    <div class="bol-penalty-list">
-                        <div><strong>$220.00</strong> for each missing Macro Plastic Bin</div>
-                        <div><strong>$125.00</strong> for each missing Wood Bin</div>
-                        <div><strong>$7.00</strong> for each missing Tote</div>
-                    </div>
-                    
-                    Northern Cherries Inc. keeps a record of all Bins and Totes that are shipped to and received from each grower. If there is a discrepancy between Northern Cherries Inc. records and the grower's records, Northern Cherries Inc. records shall prevail.
-                </div>
-                
-                <div class="bol-shipping-section">
-                    <div class="bol-shipping-item">
-                        <span class="bol-shipping-label"># Of Bins Shipping:</span>
-                        <span class="bol-shipping-value" id="bolBinsShipping">16</span>
-                    </div>
-                    <div class="bol-shipping-item">
-                        <span class="bol-shipping-label"># Of Totes Shipping:</span>
-                        <span class="bol-shipping-value" id="bolTotesShipping">384</span>
-                    </div>
-                </div>
-                
-                <div class="bol-signature-section">
-                    <div class="bol-signature-box">
-                        <div class="bol-signature-label">Receiver:</div>
-                        <div class="bol-signature-line"></div>
-                    </div>
-                    <div class="bol-signature-box">
-                        <div class="bol-signature-label">Driver:</div>
-                        <div class="bol-signature-line"></div>
-                    </div>
-                </div>
+        </div>
+
+        <div class="bol-info-section">
+            <div class="bol-info-row">
+                <span class="bol-info-label">BOL:</span>
+                <span class="bol-info-value" id="bolNumber"></span>
+            </div>
+            <div class="bol-info-row">
+                <span class="bol-info-label">Grower Name:</span>
+                <span class="bol-info-value" id="bolGrowerName"></span>
+            </div>
+            <div class="bol-info-row">
+                <span class="bol-info-label">Date:</span>
+                <span class="bol-info-value" id="bolDate"></span>
+            </div>
+            <div class="bol-info-row">
+                <span class="bol-info-label">Driver Name:</span>
+                <span class="bol-info-value" id="bolDriverName"></span>
+            </div>
+            <div class="bol-info-row">
+                <span class="bol-info-label">Company:</span>
+                <span class="bol-info-value" id="bolCompany"></span>
+            </div>
+            <div class="bol-info-row">
+                <span class="bol-info-label">Comment:</span>
+                <span class="bol-info-value" id="bolComment"></span>
+            </div>
+        </div>
+
+        <div class="bol-legal-text">
+            Northern Cherries Inc. will provide each grower with the number of Bins and Totes listed above for the 2025 Cherry Harvest Season. If the grower does not return the above number of Bins and Totes to Northern Cherries Inc. – 1254 Glenmore Road N., Kelowna, BC - seven days after their last picking date, they will be charged the following:
+            <div class="bol-charges">
+                <strong>$220.00</strong> for each missing Macro Plastic Bin<br>
+                <strong>$125.00</strong> for each missing Wood Bin<br>
+                <strong>$7.00</strong> for each missing Tote
+            </div>
+            Northern Cherries Inc. keeps a record of all Bins and Totes that are shipped to and received from each grower. If there is a discrepancy between Northern Cherries Inc. records and the grower's records, Northern Cherries Inc. records shall prevail.
+        </div>
+
+        <div class="bol-shipping-info">
+            <div># Of Bins Shipping: <span id="bolBinsShipping"></span></div>
+            <div># Of Totes Shipping: <span id="bolTotesShipping"></span></div>
+        </div>
+
+        <div class="bol-signature-section">
+            <div class="bol-signature-box">
+                Receiver: ___________________________
+            </div>
+            <div class="bol-signature-box">
+                Driver: ___________________________
             </div>
         </div>
     </div>
@@ -866,13 +838,16 @@
         let currentLanguage = 'es';
         let currentReportText = '';
         let movementData = [];
-        let bolData = [];
-        let bolCounter = 1001;
         let stockData = {
             'SHUKINS': { available: 280, fruitInHidrocooler: 45, withGrowers: 25, dispatched: 150 },
             'SMAGH': { available: 150, fruitInHidrocooler: 32, withGrowers: 18, dispatched: 90 },
             'REF': { available: 320, fruitInHidrocooler: 0, withGrowers: 0, dispatched: 180 }
         };
+        let bolCounter = 1001;
+        let currentMovementType = '';
+
+        // Google Apps Script URL
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwJppLUn46VrWvKHQ4CX2Sfp29PqnODIZNTSaYjZHDsEYDmMU-RJ05TtSNwMgsVXWrmFw/exec';
 
         // Configuración de usuarios
         const users = {
@@ -931,6 +906,9 @@
             // Initialize charts
             initializeCharts();
             
+            // Set default Google Script URL
+            localStorage.setItem('googleAppsScriptUrl', GOOGLE_SCRIPT_URL);
+            
             // Check if user is already logged in
             const savedUser = localStorage.getItem('currentUser');
             if (savedUser) {
@@ -943,12 +921,6 @@
             if (savedLanguage) {
                 currentLanguage = savedLanguage;
                 updateLanguage();
-            }
-            
-            // Load BOL counter
-            const savedBolCounter = localStorage.getItem('bolCounter');
-            if (savedBolCounter) {
-                bolCounter = parseInt(savedBolCounter);
             }
         });
 
@@ -1025,7 +997,6 @@
             } else if (sectionName === 'settings') {
                 loadSettings();
                 loadPhoneNumbers();
-                showSettings();
             } else if (sectionName === 'reports') {
                 updateLanguage();
             }
@@ -1054,327 +1025,7 @@
             localStorage.setItem('preferredLanguage', currentLanguage);
         }
 
-        // Movement modal functions
-        function openMovementModal(type) {
-            const modal = document.getElementById('movementModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const generateBolBtn = document.getElementById('generateBolBtn');
-            
-            // Reset form
-            document.getElementById('movementForm').reset();
-            document.getElementById('modalTotes').textContent = '0';
-            
-            // Hide all optional fields
-            document.querySelectorAll('#companyField, #driverField, #growerField, #varietyField, #orchardField, #harvestDateField').forEach(field => {
-                field.classList.add('hidden');
-            });
-            
-            // Show/hide BOL button
-            generateBolBtn.classList.add('hidden');
-            
-            // Show relevant fields based on movement type
-            switch(type) {
-                case 'reception':
-                    modalTitle.textContent = currentLanguage === 'es' ? 'Recepción BINS Vacíos' : 'Empty BINS Reception';
-                    document.getElementById('companyField').classList.remove('hidden');
-                    document.getElementById('driverField').classList.remove('hidden');
-                    break;
-                case 'delivery':
-                    modalTitle.textContent = currentLanguage === 'es' ? 'Entrega a Growers' : 'Delivery to Growers';
-                    document.getElementById('growerField').classList.remove('hidden');
-                    document.getElementById('orchardField').classList.remove('hidden');
-                    generateBolBtn.classList.remove('hidden');
-                    break;
-                case 'return':
-                    modalTitle.textContent = currentLanguage === 'es' ? 'Retorno BINS Llenos' : 'Full BINS Return';
-                    document.getElementById('growerField').classList.remove('hidden');
-                    document.getElementById('varietyField').classList.remove('hidden');
-                    document.getElementById('orchardField').classList.remove('hidden');
-                    document.getElementById('harvestDateField').classList.remove('hidden');
-                    break;
-                case 'dispatch':
-                    modalTitle.textContent = currentLanguage === 'es' ? 'Despacho a Kelowna' : 'Dispatch to Kelowna';
-                    document.getElementById('companyField').classList.remove('hidden');
-                    document.getElementById('driverField').classList.remove('hidden');
-                    break;
-            }
-            
-            // Set movement type
-            document.getElementById('movementForm').dataset.type = type;
-            
-            // Update grower dropdown based on selected hidrocooler
-            document.getElementById('modalHidrocooler').addEventListener('change', updateGrowerDropdown);
-            
-            modal.classList.remove('hidden');
-        }
-
-        function closeMovementModal() {
-            document.getElementById('movementModal').classList.add('hidden');
-        }
-
-        function updateTotesCalculation() {
-            const bins = parseInt(document.getElementById('modalBins').value) || 0;
-            document.getElementById('modalTotes').textContent = bins * 24;
-        }
-
-        function updateGrowerDropdown() {
-            const hidrocooler = document.getElementById('modalHidrocooler').value;
-            const growerSelect = document.getElementById('modalGrower');
-            
-            growerSelect.innerHTML = '<option value="">Seleccionar...</option>';
-            
-            if (hidrocooler && growers[hidrocooler]) {
-                growers[hidrocooler].forEach(grower => {
-                    const option = document.createElement('option');
-                    option.value = grower;
-                    option.textContent = grower;
-                    growerSelect.appendChild(option);
-                });
-            }
-        }
-
-        // BOL Functions
-        function generateBOL() {
-            const hidrocooler = document.getElementById('modalHidrocooler').value;
-            const bins = parseInt(document.getElementById('modalBins').value) || 0;
-            const grower = document.getElementById('modalGrower').value;
-            const comments = document.getElementById('modalComments').value;
-            
-            if (!hidrocooler || !bins || !grower) {
-                showNotification('Por favor completa todos los campos requeridos', 'error');
-                return;
-            }
-            
-            const totes = bins * 24;
-            const now = new Date();
-            const dateStr = now.toISOString().split('T')[0] + ', ' + now.toLocaleTimeString('en-US', { hour12: true });
-            
-            const bolRecord = {
-                id: bolCounter,
-                hidrocooler: hidrocooler,
-                growerName: grower,
-                date: dateStr,
-                driverName: 'To be filled',
-                company: grower,
-                comment: comments || '-',
-                binsShipping: bins,
-                totesShipping: totes,
-                timestamp: now.toISOString(),
-                user: currentUser.username
-            };
-            
-            // Save BOL record
-            bolData.push(bolRecord);
-            localStorage.setItem('bolData', JSON.stringify(bolData));
-            
-            // Update BOL counter
-            bolCounter++;
-            localStorage.setItem('bolCounter', bolCounter.toString());
-            
-            // Populate BOL modal
-            document.getElementById('bolNumber').textContent = bolRecord.id;
-            document.getElementById('bolGrowerName').textContent = bolRecord.growerName;
-            document.getElementById('bolDate').textContent = bolRecord.date;
-            document.getElementById('bolDriverName').textContent = bolRecord.driverName;
-            document.getElementById('bolCompany').textContent = bolRecord.company;
-            document.getElementById('bolComment').textContent = bolRecord.comment;
-            document.getElementById('bolBinsShipping').textContent = bolRecord.binsShipping;
-            document.getElementById('bolTotesShipping').textContent = bolRecord.totesShipping;
-            
-            // Show BOL modal
-            document.getElementById('bolModal').classList.remove('hidden');
-        }
-
-        function closeBolModal() {
-            document.getElementById('bolModal').classList.add('hidden');
-        }
-
-        function printBOL() {
-            window.print();
-        }
-
-        function downloadBOL() {
-            const element = document.getElementById('bolContent');
-            const opt = {
-                margin: 0.5,
-                filename: `BOL_${document.getElementById('bolNumber').textContent}.pdf`,
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-            
-            html2canvas(element, { scale: 2 }).then(canvas => {
-                const imgData = canvas.toDataURL('image/png');
-                const pdf = new jsPDF.jsPDF('p', 'mm', 'a4');
-                const imgWidth = 210;
-                const pageHeight = 295;
-                const imgHeight = (canvas.height * imgWidth) / canvas.width;
-                let heightLeft = imgHeight;
-                let position = 0;
-                
-                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
-                
-                while (heightLeft >= 0) {
-                    position = heightLeft - imgHeight;
-                    pdf.addPage();
-                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                    heightLeft -= pageHeight;
-                }
-                
-                pdf.save(`BOL_${document.getElementById('bolNumber').textContent}.pdf`);
-            });
-        }
-
-        function handleMovementSubmit(e) {
-            e.preventDefault();
-            
-            const type = e.target.dataset.type;
-            const bins = parseInt(document.getElementById('modalBins').value);
-            const totes = bins * 24;
-            
-            const movement = {
-                id: Date.now(),
-                timestamp: new Date().toISOString(),
-                type: type,
-                hidrocooler: document.getElementById('modalHidrocooler').value,
-                bins: bins,
-                totes: totes,
-                company: document.getElementById('modalCompany').value,
-                driver: document.getElementById('modalDriver').value,
-                grower: document.getElementById('modalGrower').value,
-                variety: document.getElementById('modalVariety').value,
-                orchard: document.getElementById('modalOrchard').value,
-                harvestDate: document.getElementById('modalHarvestDate').value,
-                comments: document.getElementById('modalComments').value,
-                user: currentUser.username,
-                bolGenerated: type === 'delivery' ? 'Yes' : 'No'
-            };
-            
-            // Add to movement data
-            movementData.push(movement);
-            
-            // Update stock
-            updateStockData(movement);
-            
-            // Save to localStorage
-            saveDataToStorage();
-            
-            // Send to Google Sheets
-            sendToGoogleSheets(movement);
-            
-            // Update dashboard
-            updateDashboard();
-            
-            // Close modal
-            closeMovementModal();
-            
-            // Show success message
-            showNotification('Movimiento registrado exitosamente', 'success');
-        }
-
-        function updateStockData(movement) {
-            const hidrocooler = movement.hidrocooler;
-            const bins = movement.bins;
-            
-            switch(movement.type) {
-                case 'reception':
-                    stockData[hidrocooler].available += bins;
-                    break;
-                case 'delivery':
-                    stockData[hidrocooler].available -= bins;
-                    stockData[hidrocooler].withGrowers += bins;
-                    break;
-                case 'return':
-                    stockData[hidrocooler].withGrowers -= bins;
-                    stockData[hidrocooler].fruitInHidrocooler += bins;
-                    break;
-                case 'dispatch':
-                    stockData[hidrocooler].fruitInHidrocooler -= bins;
-                    stockData[hidrocooler].dispatched += bins;
-                    break;
-            }
-        }
-
-        // Dashboard functions
-        function updateDashboard() {
-            // Calculate totals
-            let totalBins = 0;
-            let totalAvailable = 0;
-            let totalFruit = 0;
-            let totalDispatched = 0;
-            
-            Object.values(stockData).forEach(data => {
-                totalBins += data.available + data.fruitInHidrocooler + data.withGrowers;
-                totalAvailable += data.available;
-                totalFruit += data.fruitInHidrocooler;
-                totalDispatched += data.dispatched;
-            });
-            
-            // Update metric cards
-            document.getElementById('totalBins').textContent = totalBins;
-            document.getElementById('availableStock').textContent = totalAvailable;
-            document.getElementById('fruitInHidrocooler').textContent = totalFruit;
-            document.getElementById('dispatchedBins').textContent = totalDispatched;
-            
-            // Update hidrocooler cards
-            ['SHUKINS', 'SMAGH', 'REF'].forEach(hidrocooler => {
-                const prefix = hidrocooler.toLowerCase();
-                const data = stockData[hidrocooler];
-                
-                document.getElementById(prefix + 'Stock').textContent = `${data.available}/400 BINS`;
-                document.getElementById(prefix + 'Fruit').textContent = `${data.fruitInHidrocooler} BINS`;
-                document.getElementById(prefix + 'Dispatched').textContent = `${data.dispatched} BINS`;
-                
-                if (hidrocooler !== 'REF') {
-                    const withGrowersElement = document.getElementById(prefix + 'WithGrowers');
-                    if (withGrowersElement) {
-                        withGrowersElement.textContent = `${data.withGrowers} BINS`;
-                    }
-                }
-            });
-            
-            // Update charts
-            updateCharts();
-        }
-
-        function updateRecentMovements() {
-            const tbody = document.getElementById('recentMovements');
-            tbody.innerHTML = '';
-            
-            // Get last 10 movements
-            const recentMovements = movementData.slice(-10).reverse();
-            
-            recentMovements.forEach(movement => {
-                const row = document.createElement('tr');
-                row.className = 'border-b hover:bg-gray-50';
-                
-                const typeNames = {
-                    'reception': currentLanguage === 'es' ? 'Recepción Vacíos' : 'Empty Reception',
-                    'delivery': currentLanguage === 'es' ? 'Entrega a Growers' : 'Delivery to Growers',
-                    'return': currentLanguage === 'es' ? 'Retorno Llenos' : 'Full Return',
-                    'dispatch': currentLanguage === 'es' ? 'Despacho Kelowna' : 'Dispatch Kelowna'
-                };
-                
-                const bolColumn = movement.bolGenerated === 'Yes' ? 
-                    '<i class="fas fa-check-circle text-green-500"></i>' : 
-                    '<i class="fas fa-times-circle text-gray-400"></i>';
-                
-                row.innerHTML = `
-                    <td class="px-4 py-2">${new Date(movement.timestamp).toLocaleString()}</td>
-                    <td class="px-4 py-2">${movement.hidrocooler}</td>
-                    <td class="px-4 py-2">${typeNames[movement.type]}</td>
-                    <td class="px-4 py-2">${movement.bins}</td>
-                    <td class="px-4 py-2">${movement.company || movement.grower || ''}</td>
-                    <td class="px-4 py-2">${movement.user}</td>
-                    <td class="px-4 py-2">${bolColumn}</td>
-                `;
-                
-                tbody.appendChild(row);
-            });
-        }
-
-        // Functions to calculate metrics
+        // Función para calcular métricas actuales
         function calculateCurrentMetrics() {
             const totals = {
                 availableStock: stockData.SHUKINS.available + stockData.SMAGH.available + stockData.REF.available,
@@ -1383,6 +1034,7 @@
                 totalDispatched: stockData.SHUKINS.dispatched + stockData.SMAGH.dispatched + stockData.REF.dispatched
             };
             
+            // Generar alertas
             const alerts = [];
             if (stockData.SHUKINS.available < 80) alerts.push('SHUKINS: Stock bajo');
             if (stockData.SMAGH.available < 80) alerts.push('SMAGH: Stock bajo');
@@ -1409,7 +1061,7 @@
             };
         }
 
-        // Report functions
+        // Funciones de reportes mejorados
         function generateDailyReport() {
             const today = new Date().toLocaleDateString(currentLanguage === 'es' ? 'es-ES' : 'en-US');
             const reportData = calculateCurrentMetrics();
@@ -1673,6 +1325,538 @@
             document.body.removeChild(a);
         }
 
+        // Función para agregar número de teléfono
+        function addPhoneNumber() {
+            const phoneList = document.getElementById('phoneNumbersList');
+            const phoneDiv = document.createElement('div');
+            phoneDiv.className = 'flex items-center space-x-2';
+            
+            phoneDiv.innerHTML = `
+                <input type="text" placeholder="Nombre (ej: SHUKINS)" class="flex-1 p-2 border border-gray-300 rounded-md phone-name">
+                <input type="tel" placeholder="+56912345678" class="flex-1 p-2 border border-gray-300 rounded-md phone-number">
+                <button onclick="removePhoneNumber(this)" class="px-3 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">
+                    <i class="fas fa-trash"></i>
+                </button>
+            `;
+            
+            phoneList.appendChild(phoneDiv);
+        }
+
+        // Función para eliminar número de teléfono
+        function removePhoneNumber(button) {
+            button.parentElement.remove();
+        }
+
+        // Función para guardar configuración Twilio
+        function saveTwilioSettings() {
+            const accountSid = document.getElementById('twilioAccountSid').value;
+            const authToken = document.getElementById('twilioAuthToken').value;
+            const serviceSid = document.getElementById('twilioServiceSid').value;
+            
+            // Recopilar números de teléfono
+            const phoneNumbers = {};
+            const phoneEntries = document.querySelectorAll('#phoneNumbersList > div');
+            
+            phoneEntries.forEach(entry => {
+                const name = entry.querySelector('.phone-name').value;
+                const number = entry.querySelector('.phone-number').value;
+                if (name && number) {
+                    phoneNumbers[name] = number;
+                }
+            });
+            
+            // Guardar en localStorage
+            localStorage.setItem('twilioAccountSid', accountSid);
+            localStorage.setItem('twilioAuthToken', authToken);
+            localStorage.setItem('twilioServiceSid', serviceSid);
+            localStorage.setItem('whatsappNumbers', JSON.stringify(phoneNumbers));
+            
+            showNotification('Configuración de WhatsApp guardada correctamente', 'success');
+        }
+
+        // Mostrar panel de admin solo para Master Admin
+        function showSettings() {
+            showSection('settings');
+            loadPhoneNumbers();
+            
+            // Mostrar panel de admin solo para master
+            const adminPanel = document.getElementById('adminPanel');
+            if (currentUser && currentUser.role === 'super_admin') {
+                adminPanel.style.display = 'block';
+            } else {
+                adminPanel.style.display = 'none';
+            }
+            
+            // Cargar valores guardados de configuración
+            setTimeout(() => {
+                const accountSid = localStorage.getItem('twilioAccountSid') || '';
+                const authToken = localStorage.getItem('twilioAuthToken') || '';
+                const serviceSid = localStorage.getItem('twilioServiceSid') || '';
+                
+                const accountSidInput = document.getElementById('twilioAccountSid');
+                const authTokenInput = document.getElementById('twilioAuthToken');
+                const serviceSidInput = document.getElementById('twilioServiceSid');
+                
+                if (accountSidInput) accountSidInput.value = accountSid;
+                if (authTokenInput) authTokenInput.value = authToken;
+                if (serviceSidInput) serviceSidInput.value = serviceSid;
+            }, 100);
+        }
+
+        // Función para resetear stock a números reales
+        function resetStockData() {
+            const shukins = parseInt(document.getElementById('resetShukins').value) || 0;
+            const smagh = parseInt(document.getElementById('resetSmagh').value) || 0;
+            const ref = parseInt(document.getElementById('resetRef').value) || 0;
+            
+            const confirmMessage = `¿Estás seguro de resetear el stock a:\n\nSHUKINS: ${shukins} BINS\nSMAGH: ${smagh} BINS\nREF: ${ref} BINS\n\nEsta acción no se puede deshacer.`;
+            
+            if (confirm(confirmMessage)) {
+                // Resetear datos de stock
+                stockData = {
+                    'SHUKINS': { 
+                        available: shukins, 
+                        fruitInHidrocooler: 0, 
+                        withGrowers: 0, 
+                        dispatched: 0 
+                    },
+                    'SMAGH': { 
+                        available: smagh, 
+                        fruitInHidrocooler: 0, 
+                        withGrowers: 0, 
+                        dispatched: 0 
+                    },
+                    'REF': { 
+                        available: ref, 
+                        fruitInHidrocooler: 0, 
+                        withGrowers: 0, 
+                        dispatched: 0 
+                    }
+                };
+                
+                // Guardar en localStorage
+                saveDataToStorage();
+                
+                // Actualizar dashboard
+                updateDashboard();
+                
+                // Limpiar campos
+                document.getElementById('resetShukins').value = '';
+                document.getElementById('resetSmagh').value = '';
+                document.getElementById('resetRef').value = '';
+                
+                alert('✅ Stock reseteado correctamente');
+                
+                // Volver al dashboard
+                showSection('dashboard');
+            }
+        }
+
+        // Función para limpiar todos los movimientos
+        function clearAllMovements() {
+            if (confirm('⚠️ ¿Estás seguro de eliminar TODOS los movimientos?\n\nEsta acción no se puede deshacer.')) {
+                movementData = [];
+                saveDataToStorage();
+                updateRecentMovements();
+                alert('✅ Todos los movimientos han sido eliminados');
+            }
+        }
+
+        // Función para reset completo a valores de fábrica
+        function resetToFactoryDefaults() {
+            const confirmText = '🚨 RESET TOTAL DEL SISTEMA 🚨\n\nEsto eliminará:\n• Todos los movimientos\n• Todo el stock actual\n• Todas las configuraciones\n\n¿Estás COMPLETAMENTE seguro?';
+            
+            if (confirm(confirmText)) {
+                // Reset completo
+                movementData = [];
+                stockData = {
+                    'SHUKINS': { available: 0, fruitInHidrocooler: 0, withGrowers: 0, dispatched: 0 },
+                    'SMAGH': { available: 0, fruitInHidrocooler: 0, withGrowers: 0, dispatched: 0 },
+                    'REF': { available: 0, fruitInHidrocooler: 0, withGrowers: 0, dispatched: 0 }
+                };
+                
+                // Limpiar configuraciones (opcional)
+                localStorage.removeItem('movementData');
+                localStorage.removeItem('stockData');
+                localStorage.removeItem('googleAppsScriptUrl');
+                localStorage.removeItem('twilioAccountSid');
+                localStorage.removeItem('twilioAuthToken');
+                localStorage.removeItem('twilioServiceSid');
+                localStorage.removeItem('whatsappNumbers');
+                
+                // Guardar estado inicial
+                saveDataToStorage();
+                
+                // Actualizar interfaz
+                updateDashboard();
+                
+                alert('✅ Sistema reseteado completamente a valores de fábrica');
+                
+                // Volver al dashboard
+                showSection('dashboard');
+            }
+        }
+
+        // Función para cargar números guardados
+        function loadPhoneNumbers() {
+            const savedNumbers = localStorage.getItem('whatsappNumbers');
+            if (savedNumbers) {
+                const phoneNumbers = JSON.parse(savedNumbers);
+                const phoneList = document.getElementById('phoneNumbersList');
+                
+                // Limpiar lista actual
+                phoneList.innerHTML = '';
+                
+                // Agregar números guardados
+                Object.entries(phoneNumbers).forEach(([name, number]) => {
+                    addPhoneNumber();
+                    const lastEntry = phoneList.lastElementChild;
+                    lastEntry.querySelector('.phone-name').value = name;
+                    lastEntry.querySelector('.phone-number').value = number;
+                });
+            }
+            
+            // Si no hay números, agregar uno por defecto
+            if (document.getElementById('phoneNumbersList').children.length === 0) {
+                addPhoneNumber();
+            }
+        }
+
+        // Movement modal functions
+        function openMovementModal(type) {
+            const modal = document.getElementById('movementModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const generateBolBtn = document.getElementById('generateBolBtn');
+            
+            currentMovementType = type;
+            
+            // Reset form
+            document.getElementById('movementForm').reset();
+            document.getElementById('modalTotes').textContent = '0';
+            
+            // Hide all optional fields
+            document.querySelectorAll('#companyField, #driverField, #growerField, #varietyField, #orchardField, #harvestDateField').forEach(field => {
+                field.classList.add('hidden');
+            });
+            
+            // Hide BOL button by default
+            generateBolBtn.classList.add('hidden');
+            
+            // Show relevant fields based on movement type
+            switch(type) {
+                case 'reception':
+                    modalTitle.textContent = currentLanguage === 'es' ? 'Recepción BINS Vacíos' : 'Empty BINS Reception';
+                    document.getElementById('companyField').classList.remove('hidden');
+                    document.getElementById('driverField').classList.remove('hidden');
+                    break;
+                case 'delivery':
+                    modalTitle.textContent = currentLanguage === 'es' ? 'Entrega a Growers' : 'Delivery to Growers';
+                    document.getElementById('growerField').classList.remove('hidden');
+                    document.getElementById('orchardField').classList.remove('hidden');
+                    generateBolBtn.classList.remove('hidden'); // Show BOL button for delivery
+                    break;
+                case 'return':
+                    modalTitle.textContent = currentLanguage === 'es' ? 'Retorno BINS Llenos' : 'Full BINS Return';
+                    document.getElementById('growerField').classList.remove('hidden');
+                    document.getElementById('varietyField').classList.remove('hidden');
+                    document.getElementById('orchardField').classList.remove('hidden');
+                    document.getElementById('harvestDateField').classList.remove('hidden');
+                    break;
+                case 'dispatch':
+                    modalTitle.textContent = currentLanguage === 'es' ? 'Despacho a Kelowna' : 'Dispatch to Kelowna';
+                    document.getElementById('companyField').classList.remove('hidden');
+                    document.getElementById('driverField').classList.remove('hidden');
+                    break;
+            }
+            
+            // Set movement type
+            document.getElementById('movementForm').dataset.type = type;
+            
+            // Update grower dropdown based on selected hidrocooler
+            document.getElementById('modalHidrocooler').addEventListener('change', updateGrowerDropdown);
+            
+            modal.classList.remove('hidden');
+        }
+
+        function closeMovementModal() {
+            document.getElementById('movementModal').classList.add('hidden');
+        }
+
+        function updateTotesCalculation() {
+            const bins = parseInt(document.getElementById('modalBins').value) || 0;
+            document.getElementById('modalTotes').textContent = bins * 24;
+        }
+
+        function updateGrowerDropdown() {
+            const hidrocooler = document.getElementById('modalHidrocooler').value;
+            const growerSelect = document.getElementById('modalGrower');
+            
+            growerSelect.innerHTML = '<option value="">Seleccionar...</option>';
+            
+            if (hidrocooler && growers[hidrocooler]) {
+                growers[hidrocooler].forEach(grower => {
+                    const option = document.createElement('option');
+                    option.value = grower;
+                    option.textContent = grower;
+                    growerSelect.appendChild(option);
+                });
+            }
+        }
+
+        // BOL Generation Functions
+        function generateBOL() {
+            const hidrocooler = document.getElementById('modalHidrocooler').value;
+            const bins = parseInt(document.getElementById('modalBins').value) || 0;
+            const grower = document.getElementById('modalGrower').value;
+            const orchard = document.getElementById('modalOrchard').value;
+            const comments = document.getElementById('modalComments').value;
+            
+            if (!hidrocooler || !bins || !grower) {
+                alert('Please fill in all required fields (Hidrocooler, BINS, Grower)');
+                return;
+            }
+            
+            // Fill BOL template
+            document.getElementById('bolNumber').textContent = bolCounter;
+            document.getElementById('bolGrowerName').textContent = grower;
+            document.getElementById('bolDate').textContent = new Date().toLocaleString();
+            document.getElementById('bolDriverName').textContent = 'Driver Name'; // Can be filled from form if needed
+            document.getElementById('bolCompany').textContent = grower; // Using grower as company for now
+            document.getElementById('bolComment').textContent = comments || '';
+            document.getElementById('bolBinsShipping').textContent = bins;
+            document.getElementById('bolTotesShipping').textContent = bins * 24;
+            
+            // Generate PDF
+            generateBOLPDF();
+            
+            // Increment BOL counter
+            bolCounter++;
+            localStorage.setItem('bolCounter', bolCounter);
+        }
+
+        function generateBOLPDF() {
+            const element = document.getElementById('bolTemplate');
+            element.style.display = 'block';
+            
+            html2canvas(element, {
+                scale: 2,
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#ffffff'
+            }).then(canvas => {
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                
+                const imgData = canvas.toDataURL('image/png');
+                const imgWidth = 210; // A4 width in mm
+                const pageHeight = 295; // A4 height in mm
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                let heightLeft = imgHeight;
+                
+                let position = 0;
+                
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+                
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+                
+                pdf.save(`BOL_${bolCounter}_${new Date().toISOString().split('T')[0]}.pdf`);
+                
+                // Hide template after PDF generation
+                element.style.display = 'none';
+                
+                showNotification('BOL generated successfully!', 'success');
+            }).catch(error => {
+                console.error('Error generating BOL PDF:', error);
+                showNotification('Error generating BOL PDF', 'error');
+                element.style.display = 'none';
+            });
+        }
+
+        function downloadBOLFromMovement(movementId) {
+            const movement = movementData.find(m => m.id === movementId);
+            if (!movement) {
+                showNotification('Movement not found', 'error');
+                return;
+            }
+            
+            // Fill BOL template with movement data
+            document.getElementById('bolNumber').textContent = movement.bolNumber || 'N/A';
+            document.getElementById('bolGrowerName').textContent = movement.grower || 'N/A';
+            document.getElementById('bolDate').textContent = new Date(movement.timestamp).toLocaleString();
+            document.getElementById('bolDriverName').textContent = movement.driver || 'N/A';
+            document.getElementById('bolCompany').textContent = movement.grower || 'N/A';
+            document.getElementById('bolComment').textContent = movement.comments || '';
+            document.getElementById('bolBinsShipping').textContent = movement.bins;
+            document.getElementById('bolTotesShipping').textContent = movement.totes;
+            
+            // Generate PDF
+            generateBOLPDF();
+        }
+
+        function handleMovementSubmit(e) {
+            e.preventDefault();
+            
+            const type = e.target.dataset.type;
+            const bins = parseInt(document.getElementById('modalBins').value);
+            const totes = bins * 24;
+            
+            const movement = {
+                id: Date.now(),
+                timestamp: new Date().toISOString(),
+                type: type,
+                hidrocooler: document.getElementById('modalHidrocooler').value,
+                bins: bins,
+                totes: totes,
+                company: document.getElementById('modalCompany').value,
+                driver: document.getElementById('modalDriver').value,
+                grower: document.getElementById('modalGrower').value,
+                variety: document.getElementById('modalVariety').value,
+                orchard: document.getElementById('modalOrchard').value,
+                harvestDate: document.getElementById('modalHarvestDate').value,
+                comments: document.getElementById('modalComments').value,
+                user: currentUser.username,
+                bolNumber: type === 'delivery' ? bolCounter : null
+            };
+            
+            // Add to movement data
+            movementData.push(movement);
+            
+            // Update stock
+            updateStockData(movement);
+            
+            // Save to localStorage
+            saveDataToStorage();
+            
+            // Send to Google Sheets
+            sendToGoogleSheets(movement);
+            
+            // Increment BOL counter if this is a delivery
+            if (type === 'delivery') {
+                bolCounter++;
+                localStorage.setItem('bolCounter', bolCounter);
+            }
+            
+            // Update dashboard
+            updateDashboard();
+            
+            // Close modal
+            closeMovementModal();
+            
+            // Show success message
+            showNotification('Movimiento registrado exitosamente', 'success');
+        }
+
+        function updateStockData(movement) {
+            const hidrocooler = movement.hidrocooler;
+            const bins = movement.bins;
+            
+            switch(movement.type) {
+                case 'reception':
+                    stockData[hidrocooler].available += bins;
+                    break;
+                case 'delivery':
+                    stockData[hidrocooler].available -= bins;
+                    stockData[hidrocooler].withGrowers += bins;
+                    break;
+                case 'return':
+                    stockData[hidrocooler].withGrowers -= bins;
+                    stockData[hidrocooler].fruitInHidrocooler += bins;
+                    break;
+                case 'dispatch':
+                    stockData[hidrocooler].fruitInHidrocooler -= bins;
+                    stockData[hidrocooler].dispatched += bins;
+                    break;
+            }
+        }
+
+        // Dashboard functions
+        function updateDashboard() {
+            // Calculate totals
+            let totalBins = 0;
+            let totalAvailable = 0;
+            let totalFruit = 0;
+            let totalDispatched = 0;
+            
+            Object.values(stockData).forEach(data => {
+                totalBins += data.available + data.fruitInHidrocooler + data.withGrowers;
+                totalAvailable += data.available;
+                totalFruit += data.fruitInHidrocooler;
+                totalDispatched += data.dispatched;
+            });
+            
+            // Update metric cards
+            document.getElementById('totalBins').textContent = totalBins;
+            document.getElementById('availableStock').textContent = totalAvailable;
+            document.getElementById('fruitInHidrocooler').textContent = totalFruit;
+            document.getElementById('dispatchedBins').textContent = totalDispatched;
+            
+            // Update hidrocooler cards
+            ['SHUKINS', 'SMAGH', 'REF'].forEach(hidrocooler => {
+                const prefix = hidrocooler.toLowerCase();
+                const data = stockData[hidrocooler];
+                
+                document.getElementById(prefix + 'Stock').textContent = `${data.available}/400 BINS`;
+                document.getElementById(prefix + 'Fruit').textContent = `${data.fruitInHidrocooler} BINS`;
+                document.getElementById(prefix + 'Dispatched').textContent = `${data.dispatched} BINS`;
+                
+                if (hidrocooler !== 'REF') {
+                    const withGrowersElement = document.getElementById(prefix + 'WithGrowers');
+                    if (withGrowersElement) {
+                        withGrowersElement.textContent = `${data.withGrowers} BINS`;
+                    }
+                }
+            });
+            
+            // Update charts
+            updateCharts();
+        }
+
+        function updateRecentMovements() {
+            const tbody = document.getElementById('recentMovements');
+            tbody.innerHTML = '';
+            
+            // Get last 10 movements
+            const recentMovements = movementData.slice(-10).reverse();
+            
+            recentMovements.forEach(movement => {
+                const row = document.createElement('tr');
+                row.className = 'border-b hover:bg-gray-50';
+                
+                const typeNames = {
+                    'reception': currentLanguage === 'es' ? 'Recepción Vacíos' : 'Empty Reception',
+                    'delivery': currentLanguage === 'es' ? 'Entrega a Growers' : 'Delivery to Growers',
+                    'return': currentLanguage === 'es' ? 'Retorno Llenos' : 'Full Return',
+                    'dispatch': currentLanguage === 'es' ? 'Despacho Kelowna' : 'Dispatch Kelowna'
+                };
+                
+                // Create BOL download button for delivery movements
+                let bolColumn = '-';
+                if (movement.type === 'delivery' && movement.bolNumber) {
+                    bolColumn = `<button onclick="downloadBOLFromMovement(${movement.id})" class="bol-download-btn">
+                        <i class="fas fa-download"></i> BOL ${movement.bolNumber}
+                    </button>`;
+                }
+                
+                row.innerHTML = `
+                    <td class="px-4 py-2">${new Date(movement.timestamp).toLocaleString()}</td>
+                    <td class="px-4 py-2">${movement.hidrocooler}</td>
+                    <td class="px-4 py-2">${typeNames[movement.type]}</td>
+                    <td class="px-4 py-2">${movement.bins}</td>
+                    <td class="px-4 py-2">${movement.company || movement.grower || ''}</td>
+                    <td class="px-4 py-2">${movement.user}</td>
+                    <td class="px-4 py-2">${bolColumn}</td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+        }
+
         // Chart functions
         function initializeCharts() {
             // Stock Chart
@@ -1765,20 +1949,18 @@
 
         // Settings functions
         function loadSettings() {
-            const googleScriptUrl = localStorage.getItem('googleAppsScriptUrl') || '';
-            const twilioAccountSid = localStorage.getItem('twilioAccountSid') || '';
-            const twilioAuthToken = localStorage.getItem('twilioAuthToken') || '';
-            const twilioServiceSid = localStorage.getItem('twilioServiceSid') || '';
+            const url = localStorage.getItem('googleAppsScriptUrl') || GOOGLE_SCRIPT_URL;
+            const urlInput = document.getElementById('googleScriptUrl');
+            if (urlInput) {
+                urlInput.value = url;
+            }
             
-            const googleScriptUrlInput = document.getElementById('googleScriptUrl');
-            const twilioAccountSidInput = document.getElementById('twilioAccountSid');
-            const twilioAuthTokenInput = document.getElementById('twilioAuthToken');
-            const twilioServiceSidInput = document.getElementById('twilioServiceSid');
-            
-            if (googleScriptUrlInput) googleScriptUrlInput.value = googleScriptUrl;
-            if (twilioAccountSidInput) twilioAccountSidInput.value = twilioAccountSid;
-            if (twilioAuthTokenInput) twilioAuthTokenInput.value = twilioAuthToken;
-            if (twilioServiceSidInput) twilioServiceSidInput.value = twilioServiceSid;
+            const adminPanel = document.getElementById('adminPanel');
+            if (currentUser && currentUser.role === 'super_admin') {
+                adminPanel.style.display = 'block';
+            } else {
+                adminPanel.style.display = 'none';
+            }
         }
 
         function saveGoogleScriptConfig() {
@@ -1788,199 +1970,42 @@
         }
 
         function testGoogleSheetsConnection() {
-            const url = localStorage.getItem('googleAppsScriptUrl');
+            const url = localStorage.getItem('googleAppsScriptUrl') || GOOGLE_SCRIPT_URL;
             if (!url) {
                 showNotification('Por favor configura la URL de Google Apps Script primero', 'error');
                 return;
             }
             
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    showNotification('✅ Conexión con Google Sheets exitosa', 'success');
-                    console.log('Google Sheets response:', data);
-                })
-                .catch(error => {
-                    showNotification('❌ Error conectando con Google Sheets', 'error');
-                    console.error('Error:', error);
-                });
+            const testData = {
+                action: 'test',
+                message: 'Test connection from Mister Bins'
+            };
+            
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(testData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                showNotification('✅ Conexión con Google Sheets exitosa', 'success');
+                console.log('Google Sheets response:', data);
+            })
+            .catch(error => {
+                showNotification('❌ Error conectando con Google Sheets', 'error');
+                console.error('Error:', error);
+            });
         }
 
         function testWhatsAppConnection() {
             showNotification('Reporte WhatsApp generado (integración pendiente)', 'info');
         }
 
-        function addPhoneNumber() {
-            const phoneList = document.getElementById('phoneNumbersList');
-            const phoneDiv = document.createElement('div');
-            phoneDiv.className = 'flex items-center space-x-2';
-            
-            phoneDiv.innerHTML = `
-                <input type="text" placeholder="Nombre (ej: SHUKINS)" class="flex-1 p-2 border border-gray-300 rounded-md phone-name">
-                <input type="tel" placeholder="+56912345678" class="flex-1 p-2 border border-gray-300 rounded-md phone-number">
-                <button onclick="removePhoneNumber(this)" class="px-3 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">
-                    <i class="fas fa-trash"></i>
-                </button>
-            `;
-            
-            phoneList.appendChild(phoneDiv);
-        }
-
-        function removePhoneNumber(button) {
-            button.parentElement.remove();
-        }
-
-        function saveTwilioSettings() {
-            const accountSid = document.getElementById('twilioAccountSid').value;
-            const authToken = document.getElementById('twilioAuthToken').value;
-            const serviceSid = document.getElementById('twilioServiceSid').value;
-            
-            const phoneNumbers = {};
-            const phoneEntries = document.querySelectorAll('#phoneNumbersList > div');
-            
-            phoneEntries.forEach(entry => {
-                const name = entry.querySelector('.phone-name').value;
-                const number = entry.querySelector('.phone-number').value;
-                if (name && number) {
-                    phoneNumbers[name] = number;
-                }
-            });
-            
-            localStorage.setItem('twilioAccountSid', accountSid);
-            localStorage.setItem('twilioAuthToken', authToken);
-            localStorage.setItem('twilioServiceSid', serviceSid);
-            localStorage.setItem('whatsappNumbers', JSON.stringify(phoneNumbers));
-            
-            showNotification('Configuración de WhatsApp guardada correctamente', 'success');
-        }
-
-        function loadPhoneNumbers() {
-            const savedNumbers = localStorage.getItem('whatsappNumbers');
-            if (savedNumbers) {
-                const phoneNumbers = JSON.parse(savedNumbers);
-                const phoneList = document.getElementById('phoneNumbersList');
-                
-                phoneList.innerHTML = '';
-                
-                Object.entries(phoneNumbers).forEach(([name, number]) => {
-                    addPhoneNumber();
-                    const lastEntry = phoneList.lastElementChild;
-                    lastEntry.querySelector('.phone-name').value = name;
-                    lastEntry.querySelector('.phone-number').value = number;
-                });
-            }
-            
-            if (document.getElementById('phoneNumbersList').children.length === 0) {
-                addPhoneNumber();
-            }
-        }
-
-        function showSettings() {
-            showSection('settings');
-            loadPhoneNumbers();
-            
-            const adminPanel = document.getElementById('adminPanel');
-            if (currentUser && currentUser.role === 'super_admin') {
-                adminPanel.style.display = 'block';
-            } else {
-                adminPanel.style.display = 'none';
-            }
-            
-            setTimeout(() => {
-                const accountSid = localStorage.getItem('twilioAccountSid') || '';
-                const authToken = localStorage.getItem('twilioAuthToken') || '';
-                const serviceSid = localStorage.getItem('twilioServiceSid') || '';
-                
-                const accountSidInput = document.getElementById('twilioAccountSid');
-                const authTokenInput = document.getElementById('twilioAuthToken');
-                const serviceSidInput = document.getElementById('twilioServiceSid');
-                
-                if (accountSidInput) accountSidInput.value = accountSid;
-                if (authTokenInput) authTokenInput.value = authToken;
-                if (serviceSidInput) serviceSidInput.value = serviceSid;
-            }, 100);
-        }
-
-        function resetStockData() {
-            const shukins = parseInt(document.getElementById('resetShukins').value) || 0;
-            const smagh = parseInt(document.getElementById('resetSmagh').value) || 0;
-            const ref = parseInt(document.getElementById('resetRef').value) || 0;
-            
-            const confirmMessage = `¿Estás seguro de resetear el stock a:\n\nSHUKINS: ${shukins} BINS\nSMAGH: ${smagh} BINS\nREF: ${ref} BINS\n\nEsta acción no se puede deshacer.`;
-            
-            if (confirm(confirmMessage)) {
-                stockData = {
-                    'SHUKINS': { 
-                        available: shukins, 
-                        fruitInHidrocooler: 0, 
-                        withGrowers: 0, 
-                        dispatched: 0 
-                    },
-                    'SMAGH': { 
-                        available: smagh, 
-                        fruitInHidrocooler: 0, 
-                        withGrowers: 0, 
-                        dispatched: 0 
-                    },
-                    'REF': { 
-                        available: ref, 
-                        fruitInHidrocooler: 0, 
-                        withGrowers: 0, 
-                        dispatched: 0 
-                    }
-                };
-                
-                saveDataToStorage();
-                updateDashboard();
-                
-                document.getElementById('resetShukins').value = '';
-                document.getElementById('resetSmagh').value = '';
-                document.getElementById('resetRef').value = '';
-                
-                alert('✅ Stock reseteado correctamente');
-                showSection('dashboard');
-            }
-        }
-
-        function clearAllMovements() {
-            if (confirm('⚠️ ¿Estás seguro de eliminar TODOS los movimientos?\n\nEsta acción no se puede deshacer.')) {
-                movementData = [];
-                saveDataToStorage();
-                updateRecentMovements();
-                alert('✅ Todos los movimientos han sido eliminados');
-            }
-        }
-
-        function resetToFactoryDefaults() {
-            const confirmText = '🚨 RESET TOTAL DEL SISTEMA 🚨\n\nEsto eliminará:\n• Todos los movimientos\n• Todo el stock actual\n• Todas las configuraciones\n\n¿Estás COMPLETAMENTE seguro?';
-            
-            if (confirm(confirmText)) {
-                movementData = [];
-                stockData = {
-                    'SHUKINS': { available: 0, fruitInHidrocooler: 0, withGrowers: 0, dispatched: 0 },
-                    'SMAGH': { available: 0, fruitInHidrocooler: 0, withGrowers: 0, dispatched: 0 },
-                    'REF': { available: 0, fruitInHidrocooler: 0, withGrowers: 0, dispatched: 0 }
-                };
-                
-                localStorage.removeItem('movementData');
-                localStorage.removeItem('stockData');
-                localStorage.removeItem('googleAppsScriptUrl');
-                localStorage.removeItem('twilioAccountSid');
-                localStorage.removeItem('twilioAuthToken');
-                localStorage.removeItem('twilioServiceSid');
-                localStorage.removeItem('whatsappNumbers');
-                
-                saveDataToStorage();
-                updateDashboard();
-                
-                alert('✅ Sistema reseteado completamente a valores de fábrica');
-                showSection('dashboard');
-            }
-        }
-
         // Google Sheets integration
         function sendToGoogleSheets(movement) {
-            const url = localStorage.getItem('googleAppsScriptUrl');
+            const url = localStorage.getItem('googleAppsScriptUrl') || GOOGLE_SCRIPT_URL;
             if (!url) {
                 console.log('Google Apps Script URL not configured');
                 return;
@@ -1996,17 +2021,20 @@
             const payload = {
                 action: 'addMovement',
                 movement: {
+                    timestamp: movement.timestamp,
                     hidrocooler: movement.hidrocooler,
                     type: movementTypeMap[movement.type],
                     bins: movement.bins,
                     totes: movement.totes,
-                    company: movement.company,
-                    driver: movement.driver,
-                    grower: movement.grower,
-                    variety: movement.variety,
-                    orchard: movement.orchard,
-                    comments: movement.comments,
-                    user: movement.user
+                    company: movement.company || '',
+                    driver: movement.driver || '',
+                    grower: movement.grower || '',
+                    variety: movement.variety || '',
+                    orchard: movement.orchard || '',
+                    harvestDate: movement.harvestDate || '',
+                    comments: movement.comments || '',
+                    user: movement.user,
+                    bolNumber: movement.bolNumber || ''
                 }
             };
             
@@ -2021,12 +2049,15 @@
             .then(data => {
                 if (data.success) {
                     console.log('Movement sent to Google Sheets successfully');
+                    showNotification('Datos enviados a Google Sheets', 'success');
                 } else {
                     console.error('Error sending to Google Sheets:', data.error);
+                    showNotification('Error enviando a Google Sheets', 'error');
                 }
             })
             .catch(error => {
                 console.error('Error sending to Google Sheets:', error);
+                showNotification('Error de conexión con Google Sheets', 'error');
             });
         }
 
@@ -2052,13 +2083,13 @@
         function saveDataToStorage() {
             localStorage.setItem('movementData', JSON.stringify(movementData));
             localStorage.setItem('stockData', JSON.stringify(stockData));
-            localStorage.setItem('bolData', JSON.stringify(bolData));
+            localStorage.setItem('bolCounter', bolCounter);
         }
 
         function loadDataFromStorage() {
             const savedMovements = localStorage.getItem('movementData');
             const savedStock = localStorage.getItem('stockData');
-            const savedBols = localStorage.getItem('bolData');
+            const savedBolCounter = localStorage.getItem('bolCounter');
             
             if (savedMovements) {
                 movementData = JSON.parse(savedMovements);
@@ -2068,8 +2099,8 @@
                 stockData = JSON.parse(savedStock);
             }
             
-            if (savedBols) {
-                bolData = JSON.parse(savedBols);
+            if (savedBolCounter) {
+                bolCounter = parseInt(savedBolCounter);
             }
         }
     </script>
