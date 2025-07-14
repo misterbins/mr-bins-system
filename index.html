@@ -2004,34 +2004,29 @@
         }
 
         // Google Sheets integration
-        function sendToGoogleSheets(movement) {
+function sendToGoogleSheets(movement) {
     const url = 'https://script.google.com/macros/s/AKfycbwJppLUn46VrWvKHQ4CX2Sfp29PqnODIZNTSaYjZHDsEYDmMU-RJ05TtSNwMgsVXWrmFw/exec';
-    
-    // Mapear tipos de movimiento
-    const movementTypeMap = {
-        'reception': 'EMPTY_RECEPTION',
-        'delivery': 'DELIVERY_TO_GROWER',
-        'return': 'FULL_RETURN',
-        'dispatch': 'DISPATCH_TO_KELOWNA'
-    };
     
     // Crear payload con estructura esperada por tu API v2.2
     const payload = {
+        action: 'addMovement',
         sheetId: '1nDPw1PRQlTVAVq1SOAChncPyOE5NgWaIhD9aYjR21SU',
-        timestamp: new Date().toISOString(),
-        hidrocooler: movement.hidrocooler,
-        movementType: movementTypeMap[movement.type],
-        bins: movement.bins,
-        totes: movement.totes,
-        company: movement.company || '',
-        driver: movement.driver || '',
-        grower: movement.grower || '',
-        variety: movement.variety || '',
-        orchard: movement.orchard || '',
-        harvestDate: movement.harvestDate || '',
-        comments: movement.comments || '',
-        user: movement.user,
-        bolNumber: movement.bolNumber || ''
+        movement: {
+            timestamp: new Date().toISOString(),
+            hidrocooler: movement.hidrocooler,
+            type: movement.type,
+            bins: movement.bins,
+            totes: movement.totes,
+            company: movement.company || '',
+            driver: movement.driver || '',
+            grower: movement.grower || '',
+            variety: movement.variety || '',
+            orchard: movement.orchard || '',
+            harvestDate: movement.harvestDate || '',
+            comments: movement.comments || '',
+            user: movement.user,
+            bolNumber: movement.bolNumber || ''
+        }
     };
     
     console.log('📤 Enviando a Google Sheets:', payload);
@@ -2062,48 +2057,50 @@
         showNotification('❌ Error conectando con Google Sheets', 'error');
     });
 }
-        // Notification function
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = `fixed top-4 right-4 p-4 rounded-md shadow-lg z-50 ${
-                type === 'success' ? 'bg-green-500 text-white' :
-                type === 'error' ? 'bg-red-500 text-white' :
-                type === 'warning' ? 'bg-yellow-500 text-white' :
-                'bg-blue-500 text-white'
-            }`;
-            notification.textContent = message;
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.remove();
-            }, 3000);
-        }
 
-        // Data persistence
-        function saveDataToStorage() {
-            localStorage.setItem('movementData', JSON.stringify(movementData));
-            localStorage.setItem('stockData', JSON.stringify(stockData));
-            localStorage.setItem('bolCounter', bolCounter);
-        }
+// Notification function
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `fixed top-4 right-4 p-4 rounded-md shadow-lg z-50 ${
+        type === 'success' ? 'bg-green-500 text-white' :
+        type === 'error' ? 'bg-red-500 text-white' :
+        type === 'warning' ? 'bg-yellow-500 text-white' :
+        'bg-blue-500 text-white'
+    }`;
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+}
 
-        function loadDataFromStorage() {
-            const savedMovements = localStorage.getItem('movementData');
-            const savedStock = localStorage.getItem('stockData');
-            const savedBolCounter = localStorage.getItem('bolCounter');
-            
-            if (savedMovements) {
-                movementData = JSON.parse(savedMovements);
-            }
-            
-            if (savedStock) {
-                stockData = JSON.parse(savedStock);
-            }
-            
-            if (savedBolCounter) {
-                bolCounter = parseInt(savedBolCounter);
-            }
-        }
+// Data persistence
+function saveDataToStorage() {
+    localStorage.setItem('movementData', JSON.stringify(movementData));
+    localStorage.setItem('stockData', JSON.stringify(stockData));
+    localStorage.setItem('bolCounter', bolCounter);
+}
+
+function loadDataFromStorage() {
+    const savedMovements = localStorage.getItem('movementData');
+    const savedStock = localStorage.getItem('stockData');
+    const savedBolCounter = localStorage.getItem('bolCounter');
+    
+    if (savedMovements) {
+        movementData = JSON.parse(savedMovements);
+    }
+    
+    if (savedStock) {
+        stockData = JSON.parse(savedStock);
+    }
+    
+    if (savedBolCounter) {
+        bolCounter = parseInt(savedBolCounter);
+    }
+}
+
     </script>
 </body>
 </html>
