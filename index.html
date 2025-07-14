@@ -2003,11 +2003,11 @@
             showNotification('Reporte WhatsApp generado (integración pendiente)', 'info');
         }
 
-        // Google Sheets integration - DESDE CERO v3.0
+            // Google Sheets integration - DESDE CERO v3.0 (CORREGIDO)
 function sendToGoogleSheets(movement) {
-    const url = localStorage.getItem('googleAppsScriptUrl') || 'https://script.google.com/macros/s/AKfycbwO3k7f8SpK9RzdFkKLYwGWGqblh2Uxq3m2BnWsGtNI60aNxxyrN_mTs7G-J4dg2fleqw/exec';
+    const url = localStorage.getItem('googleAppsScriptUrl');
     
-    if (!url || url === 'https://script.google.com/macros/s/AKfycbwO3k7f8SpK9RzdFkKLYwGWGqblh2Uxq3m2BnWsGtNI60aNxxyrN_mTs7G-J4dg2fleqw/exec') {
+    if (!url) {
         console.error('❌ Google Apps Script URL no configurada');
         showNotification('❌ Configurar URL de Google Apps Script en Settings', 'error');
         return;
@@ -2029,6 +2029,7 @@ function sendToGoogleSheets(movement) {
     };
     
     console.log('📤 Enviando a Google Sheets:', payload);
+    console.log('📤 URL utilizada:', url);
     
     fetch(url, {
         method: 'POST',
@@ -2037,7 +2038,10 @@ function sendToGoogleSheets(movement) {
         },
         body: JSON.stringify(payload)
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log('📥 Response status:', response.status);
+        return response.json();
+    })
     .then(data => {
         console.log('✅ Respuesta Google Sheets:', data);
         if (data.status === 'OK') {
