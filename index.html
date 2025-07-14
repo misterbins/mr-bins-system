@@ -2005,62 +2005,62 @@
 
         // Google Sheets integration
         function sendToGoogleSheets(movement) {
-            const url = localStorage.getItem('googleAppsScriptUrl') || GOOGLE_SCRIPT_URL;
-            if (!url) {
-                console.log('Google Apps Script URL not configured');
-                return;
-            }
-            
-            const movementTypeMap = {
-                'reception': 'EMPTY_RECEPTION',
-                'delivery': 'DELIVERY_TO_GROWER',
-                'return': 'FULL_RETURN',
-                'dispatch': 'DISPATCH_TO_KELOWNA'
-            };
-            
-            const payload = {
-                action: 'addMovement',
-                movement: {
-                    timestamp: movement.timestamp,
-                    hidrocooler: movement.hidrocooler,
-                    type: movementTypeMap[movement.type],
-                    bins: movement.bins,
-                    totes: movement.totes,
-                    company: movement.company || '',
-                    driver: movement.driver || '',
-                    grower: movement.grower || '',
-                    variety: movement.variety || '',
-                    orchard: movement.orchard || '',
-                    harvestDate: movement.harvestDate || '',
-                    comments: movement.comments || '',
-                    user: movement.user,
-                    bolNumber: movement.bolNumber || ''
-                }
-            };
-            
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    console.log('Movement sent to Google Sheets successfully');
-                    showNotification('Datos enviados a Google Sheets', 'success');
-                } else {
-                    console.error('Error sending to Google Sheets:', data.error);
-                    showNotification('Error enviando a Google Sheets', 'error');
-                }
-            })
-            .catch(error => {
-                console.error('Error sending to Google Sheets:', error);
-                showNotification('Error de conexión con Google Sheets', 'error');
-            });
+    const url = 'https://script.google.com/macros/s/AKfycbwJppLUn46VrWvKHQ4CX2Sfp29PqnODIZNTSaYjZHDsEYDmMU-RJ05TtSNwMgsVXWrmFw/exec';
+    
+    // Mapear tipos de movimiento
+    const movementTypeMap = {
+        'reception': 'EMPTY_RECEPTION',
+        'delivery': 'DELIVERY_TO_GROWER',
+        'return': 'FULL_RETURN',
+        'dispatch': 'DISPATCH_TO_KELOWNA'
+    };
+    
+    // Crear payload con estructura esperada por tu API v2.2
+    const payload = {
+        timestamp: new Date().toISOString(),
+        hidrocooler: movement.hidrocooler,
+        movementType: movementTypeMap[movement.type],
+        bins: movement.bins,
+        totes: movement.totes,
+        company: movement.company || '',
+        driver: movement.driver || '',
+        grower: movement.grower || '',
+        variety: movement.variety || '',
+        orchard: movement.orchard || '',
+        harvestDate: movement.harvestDate || '',
+        comments: movement.comments || '',
+        user: movement.user,
+        bolNumber: movement.bolNumber || ''
+    };
+    
+    console.log('📤 Enviando a Google Sheets:', payload);
+    
+    // Enviar datos
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => {
+        console.log('📥 Respuesta recibida:', response.status, response.statusText);
+        return response.json();
+    })
+    .then(data => {
+        console.log('✅ Respuesta Google Sheets:', data);
+        if (data.status === 'OK' || data.success) {
+            showNotification('✅ Datos enviados a Google Sheets correctamente', 'success');
+        } else {
+            console.error('❌ Error en respuesta:', data);
+            showNotification('⚠️ Datos enviados pero respuesta inesperada', 'warning');
         }
-
+    })
+    .catch(error => {
+        console.error('❌ Error enviando a Google Sheets:', error);
+        showNotification('❌ Error conectando con Google Sheets', 'error');
+    });
+}
         // Notification function
         function showNotification(message, type = 'info') {
             const notification = document.createElement('div');
