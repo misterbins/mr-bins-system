@@ -2005,28 +2005,23 @@
 
         // Google Sheets integration
 function sendToGoogleSheets(movement) {
-    const url = 'https://script.google.com/macros/s/AKfycbwJppLUn46VrWvKHQ4CX2Sfp29PqnODIZNTSaYjZHDsEYDmMU-RJ05TtSNwMgsVXWrmFw/exec';
+    const url = localStorage.getItem('googleAppsScriptUrl') || 'https://script.google.com/macros/s/AKfycbwJppLUn46VrWvKHQ4CX2Sfp29PqnODIZNTSaYjZHDsEYDmMU-RJ05TtSNwMgsVXWrmFw/exec';
     
-    // Crear payload con estructura esperada por tu API v2.2
+    // Crear payload que coincida exactamente con las columnas de tu Google Sheet
     const payload = {
-        action: 'addMovement',
-        sheetId: '1nDPw1PRQlTVAVq1SOAChncPyOE5NgWaIhD9aYjR21SU',
-        movement: {
-            timestamp: new Date().toISOString(),
-            hidrocooler: movement.hidrocooler,
-            type: movement.type,
-            bins: movement.bins,
-            totes: movement.totes,
-            company: movement.company || '',
-            driver: movement.driver || '',
-            grower: movement.grower || '',
-            variety: movement.variety || '',
-            orchard: movement.orchard || '',
-            harvestDate: movement.harvestDate || '',
-            comments: movement.comments || '',
-            user: movement.user,
-            bolNumber: movement.bolNumber || ''
-        }
+        'Date/Time': new Date().toLocaleString(),
+        'Hidrocooler': movement.hidrocooler,
+        'Movement Type': movement.type,
+        'BINS': movement.bins,
+        'TOTES': movement.totes,
+        'Company': movement.company || '',
+        'Driver': movement.driver || '',
+        'Grower': movement.grower || '',
+        'Variety': movement.variety || '',
+        'Orchard': movement.orchard || '',
+        'Comments': movement.comments || '',
+        'User': movement.user,
+        'Status': 'Completed'
     };
     
     console.log('📤 Enviando a Google Sheets:', payload);
@@ -2057,6 +2052,7 @@ function sendToGoogleSheets(movement) {
         showNotification('❌ Error conectando con Google Sheets', 'error');
     });
 }
+
 
 // Notification function
 function showNotification(message, type = 'info') {
