@@ -2003,34 +2003,149 @@
             showNotification('Reporte WhatsApp generado (integración pendiente)', 'info');
         }
 
-       // Google Sheets integration
+      // Google Sheets integration - Multi-tab support with exact column structure
 function sendToGoogleSheets(movement) {
     const url = localStorage.getItem('googleAppsScriptUrl') || 'https://script.google.com/macros/s/AKfycbwJppLUn46VrWvKHQ4CX2Sfp29PqnODIZNTSaYjZHDsEYDmMU-RJ05TtSNwMgsVXWrmFw/exec';
     
-    // Crear payload para Google Apps Script con Service Account
-    const payload = {
+    const timestamp = new Date().toLocaleString();
+    const currentStock = stockData[movement.hidrocooler] || {};
+    
+    // 1. MOVEMENTS - Registro principal del movimiento
+    const movementData = {
         action: 'addRow',
         spreadsheetId: '1nDPw1PRQlTVAVq1SOAChncPyOE5NgWaIhD9aYjR21SU',
+        sheetName: 'Movements',
         data: {
-            datetime: new Date().toLocaleString(),
-            hidrocooler: movement.hidrocooler,
-            movementType: movement.type,
-            bins: movement.bins,
-            totes: movement.totes,
-            company: movement.company || '',
-            driver: movement.driver || '',
-            grower: movement.grower || '',
-            variety: movement.variety || '',
-            orchard: movement.orchard || '',
-            comments: movement.comments || '',
-            user: movement.user,
-            status: 'Completed'
+            'Date/Time': timestamp,
+            'Hidrocooler': movement.hidrocooler,
+            'Movement Type': movement.type,
+            'BINS': movement.bins,
+            'TOTES': movement.totes,
+            'Company': movement.company || '',
+            'Driver': movement.driver || '',
+            'Grower': movement.grower || '',
+            'Variety': movement.variety || '',
+            'Orchard': movement.orchard || '',
+            'Comments': movement.comments || '',
+            'User': movement.user,
+            'Status': 'Completed'
         }
     };
     
-    console.log('📤 Enviando a Google Sheets:', payload);
+    // 2. LOGS - Log de actividad del sistema
+    const logData = {
+        action: 'addRow',
+        spreadsheetId: '1nDPw1PRQlTVAVq1SOAChncPyOE5NgWaIhD9aYjR21SU',
+        sheetName: 'Logs',
+        data: {
+            'Date/Time': timestamp,
+            'User': movement.user,
+            'Action': `${movement.type} - ${movement.hidrocooler}`,
+            'Details': `${movement.bins} BINS, ${movement.totes} TOTES${movement.grower ? ` - ${movement.grower}` : ''}`,
+            'IP': 'System'
+        }
+    };
     
-    fetch(url, {
+    // 3. STOCK - Actualización de stock actual
+    const stockUpdateData = {
+        action: 'updateStock',
+        spreadsheetId: '1nDPw1PRQlTVAVq1SOAChncPyOE5NgWaIhD9aYjR21SU',
+        sheetName: 'Stock',
+        hidrocooler: movement.hidrocooler,
+        data: {
+            'Hidrocooler': movement.hidrocooler,
+            'Current BINS': currentStock.available || 0,
+            'Current TOTES': (currentStock.available || 0) * 24,
+            'Capacity BINS': 400,
+            'Capacity TOTES': 9600,
+            'Occupancy %': ((currentStock.available || 0) / 400 * 100).toFixed(1) + '%',
+            'Last Updated': timestamp
+        }
+    };
+    
+    // 4. ACCUMULATED - Datos acumulados por hidrocooler/variedad
+    const accumulatedData = {
+        action: 'updateAccumulated',
+        spreadsheetId: '1nDPw1PRQlTVAVq1SOAChncPyOE5NgWaIhD9aYjR21SU',
+        sheetName: 'Accumulated',
+        data: {
+            'Hidrocooler': movement.hidrocooler,
+            'Variety': movement.variety || 'N/A',
+            'Total BINS': movement.bins,
+            'Total TOTES': movement.totes,
+            'Last Movement': timestamp
+        }
+    };
+    
+    // 5. METRICS - Métricas diarias del sistema
+    const metricsData = {
+        action: 'updateMetrics',
+        spreadsheetId: '1nDPw1PRQlTVAVq1SOAChncPyOE5NgWaIhD9aYjR21SU',
+        sheetName: 'Metrics',
+        data: {
+            'Date': new Date().toISOString().split('T')[0],
+            'Hidrocooler': movement.hidrocooler,
+            'Available Stock': currentStock.available || 0,
+            'Fruit in Hidrocooler': currentStock.fruitInHidrocooler || 0,
+            'With Growers': currentStock.withGrowers || 0,
+            'Dispatched Total': currentStock.dispatched || 0,
+            'Efficiency': calculateEfficiency(currentStock),
+            'Alerts': getAlerts(currentStock)
+        }
+    };
+    
+    // 6. GROWERS - Solo si hay grower en el movimiento
+    const growerData = movement.grower ? {
+        action: 'updateGrower',
+        spreadsheetId: '1nDPw1PRQlTVAVq1SOAChncPyOE5NgWaIhD9aYjR21SU',
+        sheetName: 'Growers',
+        data: {
+            'Grower': movement.grower,
+            'Hidrocooler': movement.hidrocooler,
+            'Specialties': movement.variety || 'Mixed',
+            'Contact': 'TBD'
+        }
+    } : null;
+    
+    console.log('📤 Enviando datos a múltiples pestañas:', {
+        movements: movementData,
+        logs: logData,
+        stock: stockUpdateData,
+        accumulated: accumulatedData,
+        metrics: metricsData,
+        grower: growerData
+    });
+    
+    // Enviar a todas las pestañas relevantes
+    const requests = [
+        sendDataToSheet(movementData),
+        sendDataToSheet(logData),
+        sendDataToSheet(stockUpdateData),
+        sendDataToSheet(accumulatedData),
+        sendDataToSheet(metricsData)
+    ];
+    
+    // Agregar grower data si existe
+    if (growerData) {
+        requests.push(sendDataToSheet(growerData));
+    }
+    
+    Promise.all(requests)
+        .then(results => {
+            console.log('✅ Todos los datos enviados exitosamente:', results);
+            showNotification('✅ Datos enviados a Google Sheets (5-6 pestañas)', 'success');
+        })
+        .catch(error => {
+            console.error('❌ Error enviando datos:', error);
+            showNotification('❌ Error conectando con Google Sheets', 'error');
+        });
+}
+
+// Función auxiliar para enviar datos a una pestaña específica
+function sendDataToSheet(payload) {
+    const url = localStorage.getItem('googleAppsScriptUrl') || 'https://script.google.com/macros/s/AKfycbwJppLUn46VrWvKHQ4CX2Sfp29PqnODIZNTSaYjZHDsEYDmMU-RJ05TtSNwMgsVXWrmFw/exec';
+    
+    return fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -2038,25 +2153,34 @@ function sendToGoogleSheets(movement) {
         body: JSON.stringify(payload)
     })
     .then(response => {
-        console.log('📥 Respuesta recibida:', response.status, response.statusText);
+        console.log(`📥 Respuesta ${payload.sheetName}:`, response.status, response.statusText);
         return response.json();
     })
     .then(data => {
-        console.log('✅ Respuesta Google Sheets:', data);
-        if (data.status === 'OK' || data.success) {
-            showNotification('✅ Datos enviados a Google Sheets correctamente', 'success');
-        } else {
-            console.error('❌ Error en respuesta:', data);
-            showNotification('⚠️ Datos enviados pero respuesta inesperada', 'warning');
-        }
+        console.log(`✅ ${payload.sheetName} actualizado:`, data);
+        return { sheet: payload.sheetName, success: true, data };
     })
     .catch(error => {
-        console.error('❌ Error enviando a Google Sheets:', error);
-        showNotification('❌ Error conectando con Google Sheets', 'error');
+        console.error(`❌ Error en ${payload.sheetName}:`, error);
+        return { sheet: payload.sheetName, success: false, error };
     });
 }
 
-// Notification function
+// Funciones auxiliares para cálculos
+function calculateEfficiency(stock) {
+    const total = (stock.available || 0) + (stock.fruitInHidrocooler || 0) + (stock.withGrowers || 0);
+    const efficiency = total > 0 ? ((stock.dispatched || 0) / total * 100) : 0;
+    return efficiency.toFixed(1) + '%';
+}
+
+function getAlerts(stock) {
+    const alerts = [];
+    if ((stock.available || 0) < 80) alerts.push('Low Stock');
+    if ((stock.fruitInHidrocooler || 0) > 100) alerts.push('High Inventory');
+    return alerts.join(', ') || 'None';
+}
+
+// Notification function - MANTENER
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `fixed top-4 right-4 p-4 rounded-md shadow-lg z-50 ${
@@ -2074,7 +2198,7 @@ function showNotification(message, type = 'info') {
     }, 3000);
 }
 
-// Data persistence
+// Data persistence - MANTENER
 function saveDataToStorage() {
     localStorage.setItem('movementData', JSON.stringify(movementData));
     localStorage.setItem('stockData', JSON.stringify(stockData));
