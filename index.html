@@ -2003,36 +2003,32 @@
             showNotification('Reporte WhatsApp generado (integración pendiente)', 'info');
         }
 
-      // Google Sheets integration - Multi-tab support with exact column structure
-// Google Sheets integration - SOLO MOVEMENTS (simplificado)
+        // Google Sheets integration - DESDE CERO v3.0
 function sendToGoogleSheets(movement) {
-    const url = localStorage.getItem('googleAppsScriptUrl') || 'https://script.google.com/macros/s/AKfycbwJppLUn46VrWvKHQ4CX2Sfp29PqnODIZNTSaYjZHDsEYDmMU-RJ05TtSNwMgsVXWrmFw/exec';
+    const url = localStorage.getItem('googleAppsScriptUrl') || 'https://script.google.com/macros/s/AKfycbwO3k7f8SpK9RzdFkKLYwGWGqblh2Uxq3m2BnWsGtNI60aNxxyrN_mTs7G-J4dg2fleqw/exec';
     
-    const timestamp = new Date().toLocaleString();
+    if (!url || url === 'https://script.google.com/macros/s/AKfycbwO3k7f8SpK9RzdFkKLYwGWGqblh2Uxq3m2BnWsGtNI60aNxxyrN_mTs7G-J4dg2fleqw/exec') {
+        console.error('❌ Google Apps Script URL no configurada');
+        showNotification('❌ Configurar URL de Google Apps Script en Settings', 'error');
+        return;
+    }
     
-    // Solo enviar a MOVEMENTS para evitar duplicados
     const payload = {
-        action: 'addRow',
-        spreadsheetId: '1nDPw1PRQlTVAVq1SOAChncPyOE5NgWaIhD9aYjR21SU',
-        sheetName: 'Movements',
-        data: [
-            timestamp,
-            movement.hidrocooler,
-            movement.type,
-            movement.bins,
-            movement.totes,
-            movement.company || '',
-            movement.driver || '',
-            movement.grower || '',
-            movement.variety || '',
-            movement.orchard || '',
-            movement.comments || '',
-            movement.user,
-            'Completed'
-        ]
+        datetime: new Date().toLocaleString(),
+        hidrocooler: movement.hidrocooler,
+        movementType: movement.type,
+        bins: movement.bins,
+        totes: movement.totes,
+        company: movement.company || '',
+        driver: movement.driver || '',
+        grower: movement.grower || '',
+        variety: movement.variety || '',
+        orchard: movement.orchard || '',
+        comments: movement.comments || '',
+        user: movement.user
     };
     
-    console.log('📤 Enviando solo a Movements:', payload);
+    console.log('📤 Enviando a Google Sheets:', payload);
     
     fetch(url, {
         method: 'POST',
@@ -2041,27 +2037,23 @@ function sendToGoogleSheets(movement) {
         },
         body: JSON.stringify(payload)
     })
-    .then(response => {
-        console.log('📥 Respuesta recibida:', response.status, response.statusText);
-        return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
         console.log('✅ Respuesta Google Sheets:', data);
-        if (data.status === 'OK' || data.success) {
+        if (data.status === 'OK') {
             showNotification('✅ Datos enviados a Google Sheets correctamente', 'success');
         } else {
-            console.error('❌ Error en respuesta:', data);
-            showNotification('⚠️ Datos enviados pero respuesta inesperada', 'warning');
+            showNotification('❌ Error: ' + data.message, 'error');
         }
     })
     .catch(error => {
-        console.error('❌ Error enviando a Google Sheets:', error);
+        console.error('❌ Error:', error);
         showNotification('❌ Error conectando con Google Sheets', 'error');
     });
 }
 
-// Notification function
-function showNotification(message, type = 'info') {
+        // Notification function
+    function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `fixed top-4 right-4 p-4 rounded-md shadow-lg z-50 ${
         type === 'success' ? 'bg-green-500 text-white' :
@@ -2078,8 +2070,8 @@ function showNotification(message, type = 'info') {
     }, 3000);
 }
 
-// Data persistence
-function saveDataToStorage() {
+    // Data persistence
+    function saveDataToStorage() {
     localStorage.setItem('movementData', JSON.stringify(movementData));
     localStorage.setItem('stockData', JSON.stringify(stockData));
     localStorage.setItem('bolCounter', bolCounter);
