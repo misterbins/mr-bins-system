@@ -2005,7 +2005,10 @@
 
             // Google Sheets integration - DESDE CERO v3.0 (CORREGIDO)
 function sendToGoogleSheets(movement) {
+    console.log('🔥 ENTRANDO A sendToGoogleSheets:', movement);
+    
     const url = localStorage.getItem('googleAppsScriptUrl');
+    console.log('🔥 URL OBTENIDA:', url);
     
     if (!url) {
         console.error('❌ Google Apps Script URL no configurada');
